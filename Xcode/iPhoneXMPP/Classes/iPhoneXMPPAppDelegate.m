@@ -494,7 +494,7 @@
 															 delegate:nil 
 													cancelButtonTitle:@"Ok" 
 													otherButtonTitles:nil];
-			[alertView show];
+			//[alertView show];
 		}
 		else
 		{
@@ -561,9 +561,9 @@
 		                                                   delegate:nil 
 		                                          cancelButtonTitle:@"Not implemented"
 		                                          otherButtonTitles:nil];
-		[alertView show];
+		//[alertView show];
 	} 
-	else 
+	else
 	{
 		// We are not active, so use a local notification instead
 		UILocalNotification *localNotification = [[UILocalNotification alloc] init];

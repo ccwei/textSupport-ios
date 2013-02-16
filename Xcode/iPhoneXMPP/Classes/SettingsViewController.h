@@ -12,13 +12,17 @@
 extern NSString *const kXMPPmyJID;
 extern NSString *const kXMPPmyPassword;
 
+@protocol SettingProtocol <NSObject>
 
+- (void)removeUserData;
+
+@end
 @interface SettingsViewController : UIViewController 
 {
   UITextField *jidField;
   UITextField *passwordField;
 }
-
+@property (nonatomic,assign) id<SettingProtocol> delegate;
 @property (nonatomic,strong) IBOutlet UITextField *jidField;
 @property (nonatomic,strong) IBOutlet UITextField *passwordField;
 

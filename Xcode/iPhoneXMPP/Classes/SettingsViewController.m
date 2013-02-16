@@ -7,13 +7,18 @@
 //
 
 #import "SettingsViewController.h"
-
+#import "iPhoneXMPPAppDelegate.h"
 
 NSString *const kXMPPmyJID = @"kXMPPmyJID";
 NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 
 
 @implementation SettingsViewController
+
+- (iPhoneXMPPAppDelegate *)appDelegate
+{
+	return (iPhoneXMPPAppDelegate *)[[UIApplication sharedApplication] delegate];
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Init/dealloc methods
@@ -38,7 +43,7 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 #pragma mark Private
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (void)setField:(UITextField *)field forKey:(NSString *)key
+- (void)setUserDefaultField:(UITextField *)field forKey:(NSString *)key
 {
   if (field.text != nil) 
   {
@@ -48,18 +53,32 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
   }
 }
 
+- (void)clearUserDefaultFieldForKey:(NSString *)key
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Actions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (IBAction)done:(id)sender
 {
-  [self setField:jidField forKey:kXMPPmyJID];
-  [self setField:passwordField forKey:kXMPPmyPassword];
+  [self setUserDefaultField:jidField forKey:kXMPPmyJID];
+  [self setUserDefaultField:passwordField forKey:kXMPPmyPassword];
 
   [self dismissModalViewControllerAnimated:YES];
 }
 
+- (IBAction)logOut:(id)sender
+{
+    [self.delegate removeUserData];
+    [self clearUserDefaultFieldForKey:kXMPPmyJID];
+    [self clearUserDefaultFieldForKey:kXMPPmyPassword];
+    [[self appDelegate] disconnect];
+
+    [self dismissModalViewControllerAnimated:YES];
+}
 - (IBAction)hideKeyboard:(id)sender {
   [sender resignFirstResponder];
   [self done:sender];

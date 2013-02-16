@@ -1,7 +1,5 @@
 #import "RootViewController.h"
 #import "iPhoneXMPPAppDelegate.h"
-#import "SettingsViewController.h"
-
 #import "XMPPFramework.h"
 #import "DDLog.h"
 
@@ -49,6 +47,7 @@
 	}
 	
 	[titleLabel sizeToFit];
+    [self.tableView reloadData];
 
 	self.navigationItem.titleView = titleLabel;
 }
@@ -187,6 +186,19 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark Setting Delegate
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-(void)removeUserData
+{
+    NSManagedObjectContext *moc = [[self appDelegate] managedObjectContext_roster];
+    XMPPUserCoreDataStorageObject *user = [[[self appDelegate] xmppRosterStorage] userForJID:[[[self appDelegate] xmppStream] myJID]
+	                                                         xmppStream:[[self appDelegate] xmppStream]
+	                                               managedObjectContext:moc];
+    [moc deleteObject:user];
+    
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Actions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -198,6 +210,7 @@
             if ([segue.identifier isEqualToString:@"Show Messages"]) {
                 XMPPUserCoreDataStorageObject *user = [[self fetchedResultsController] objectAtIndexPath:indexPath];
                 [segue.destinationViewController performSelector:@selector(setUserName:) withObject:[user displayName]];
+                //[segue.destinationViewController performSelector:@selector(setDelegate:) withObject:self];
             }
         }
     }

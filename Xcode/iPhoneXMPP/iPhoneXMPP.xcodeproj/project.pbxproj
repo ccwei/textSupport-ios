@@ -39,6 +39,16 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		B680520A16CF83C900B81836 /* XMPPMessageArchiving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B680520016CF83C900B81836 /* XMPPMessageArchiving.xcdatamodeld */; };
+		B680520B16CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B680520316CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.m */; };
+		B680520C16CF83C900B81836 /* XMPPMessageArchiving_Message_CoreDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B680520516CF83C900B81836 /* XMPPMessageArchiving_Message_CoreDataObject.m */; };
+		B680520D16CF83C900B81836 /* XMPPMessageArchivingCoreDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B680520716CF83C900B81836 /* XMPPMessageArchivingCoreDataStorage.m */; };
+		B680520E16CF83C900B81836 /* XMPPMessageArchiving.m in Sources */ = {isa = PBXBuildFile; fileRef = B680520916CF83C900B81836 /* XMPPMessageArchiving.m */; };
+		B680521216CF84CE00B81836 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = B680521116CF84CD00B81836 /* NSString+Utils.m */; };
+		B680521516CF861800B81836 /* MessageViewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B680521416CF861800B81836 /* MessageViewTableCell.m */; };
+		B680521816CF883500B81836 /* ballon2.png in Resources */ = {isa = PBXBuildFile; fileRef = B680521616CF883500B81836 /* ballon2.png */; };
+		B680521916CF883500B81836 /* ballon1.png in Resources */ = {isa = PBXBuildFile; fileRef = B680521716CF883500B81836 /* ballon1.png */; };
+		B680522116CF8D7F00B81836 /* XMPPMessage+XEP_0085.m in Sources */ = {isa = PBXBuildFile; fileRef = B680522016CF8D7F00B81836 /* XMPPMessage+XEP_0085.m */; };
 		B6B5B42A16CE1AF2001A94BE /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B5B42916CE1AF2001A94BE /* ChatViewController.m */; };
 		B6B5B42D16CE1B18001A94BE /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6B5B42C16CE1B18001A94BE /* Storyboard.storyboard */; };
 		DC1CF89B1361F28000E71363 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8901361F28000E71363 /* NSString+DDXML.m */; };
@@ -161,6 +171,23 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RootViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* iPhoneXMPP-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iPhoneXMPP-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		B680520116CF83C900B81836 /* XMPPMessageArchiving.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XMPPMessageArchiving.xcdatamodel; sourceTree = "<group>"; };
+		B680520216CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPMessageArchiving_Contact_CoreDataObject.h; sourceTree = "<group>"; };
+		B680520316CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPMessageArchiving_Contact_CoreDataObject.m; sourceTree = "<group>"; };
+		B680520416CF83C900B81836 /* XMPPMessageArchiving_Message_CoreDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPMessageArchiving_Message_CoreDataObject.h; sourceTree = "<group>"; };
+		B680520516CF83C900B81836 /* XMPPMessageArchiving_Message_CoreDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPMessageArchiving_Message_CoreDataObject.m; sourceTree = "<group>"; };
+		B680520616CF83C900B81836 /* XMPPMessageArchivingCoreDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPMessageArchivingCoreDataStorage.h; sourceTree = "<group>"; };
+		B680520716CF83C900B81836 /* XMPPMessageArchivingCoreDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPMessageArchivingCoreDataStorage.m; sourceTree = "<group>"; };
+		B680520816CF83C900B81836 /* XMPPMessageArchiving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPMessageArchiving.h; sourceTree = "<group>"; };
+		B680520916CF83C900B81836 /* XMPPMessageArchiving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPMessageArchiving.m; sourceTree = "<group>"; };
+		B680521016CF84CD00B81836 /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
+		B680521116CF84CD00B81836 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
+		B680521316CF861800B81836 /* MessageViewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewTableCell.h; sourceTree = "<group>"; };
+		B680521416CF861800B81836 /* MessageViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewTableCell.m; sourceTree = "<group>"; };
+		B680521616CF883500B81836 /* ballon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballon2.png; sourceTree = "<group>"; };
+		B680521716CF883500B81836 /* ballon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballon1.png; sourceTree = "<group>"; };
+		B680521F16CF8D7F00B81836 /* XMPPMessage+XEP_0085.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XMPPMessage+XEP_0085.h"; sourceTree = "<group>"; };
+		B680522016CF8D7F00B81836 /* XMPPMessage+XEP_0085.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XMPPMessage+XEP_0085.m"; sourceTree = "<group>"; };
 		B6B5B42816CE1AF2001A94BE /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		B6B5B42916CE1AF2001A94BE /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		B6B5B42C16CE1B18001A94BE /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
@@ -310,6 +337,8 @@
 		070400471347CB510092A737 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B680521E16CF8D7F00B81836 /* XEP-0085 */,
+				B68051FE16CF83C900B81836 /* XEP-0136 */,
 				DC37309B139E9FD100A8407D /* Reconnect */,
 				DC488440134AEB06000F79C5 /* CoreDataStorage */,
 				DC37309F139E9FDA00A8407D /* Roster */,
@@ -424,6 +453,8 @@
 				1D3623250D0F684500981E51 /* iPhoneXMPPAppDelegate.m */,
 				B6B5B42816CE1AF2001A94BE /* ChatViewController.h */,
 				B6B5B42916CE1AF2001A94BE /* ChatViewController.m */,
+				B680521316CF861800B81836 /* MessageViewTableCell.h */,
+				B680521416CF861800B81836 /* MessageViewTableCell.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				0704FFC5134794020092A737 /* SettingsViewController.h */,
@@ -444,6 +475,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				B680521016CF84CD00B81836 /* NSString+Utils.h */,
+				B680521116CF84CD00B81836 /* NSString+Utils.m */,
 				DC1F98001152CAF300138A8F /* XMPP */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -466,6 +499,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B680521616CF883500B81836 /* ballon2.png */,
+				B680521716CF883500B81836 /* ballon1.png */,
 				070400441347CB140092A737 /* defaultPerson.png */,
 				8D1107310486CEB800E47090 /* iPhoneXMPP-Info.plist */,
 			);
@@ -488,6 +523,39 @@
 				DCD4944212234A49004BEE1A /* libresolv.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B68051FE16CF83C900B81836 /* XEP-0136 */ = {
+			isa = PBXGroup;
+			children = (
+				B68051FF16CF83C900B81836 /* CoreDataStorage */,
+				B680520816CF83C900B81836 /* XMPPMessageArchiving.h */,
+				B680520916CF83C900B81836 /* XMPPMessageArchiving.m */,
+			);
+			path = "XEP-0136";
+			sourceTree = "<group>";
+		};
+		B68051FF16CF83C900B81836 /* CoreDataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				B680520016CF83C900B81836 /* XMPPMessageArchiving.xcdatamodeld */,
+				B680520216CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.h */,
+				B680520316CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.m */,
+				B680520416CF83C900B81836 /* XMPPMessageArchiving_Message_CoreDataObject.h */,
+				B680520516CF83C900B81836 /* XMPPMessageArchiving_Message_CoreDataObject.m */,
+				B680520616CF83C900B81836 /* XMPPMessageArchivingCoreDataStorage.h */,
+				B680520716CF83C900B81836 /* XMPPMessageArchivingCoreDataStorage.m */,
+			);
+			path = CoreDataStorage;
+			sourceTree = "<group>";
+		};
+		B680521E16CF8D7F00B81836 /* XEP-0085 */ = {
+			isa = PBXGroup;
+			children = (
+				B680521F16CF8D7F00B81836 /* XMPPMessage+XEP_0085.h */,
+				B680522016CF8D7F00B81836 /* XMPPMessage+XEP_0085.m */,
+			);
+			path = "XEP-0085";
 			sourceTree = "<group>";
 		};
 		DC1CF88D1361F28000E71363 /* KissXML */ = {
@@ -876,6 +944,8 @@
 				070400451347CB140092A737 /* defaultPerson.png in Resources */,
 				DC90AC6D147C28850022DF52 /* README.txt in Resources */,
 				B6B5B42D16CE1B18001A94BE /* Storyboard.storyboard in Resources */,
+				B680521816CF883500B81836 /* ballon2.png in Resources */,
+				B680521916CF883500B81836 /* ballon1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -963,6 +1033,14 @@
 				DC30E6D0153E09D2001B9E6D /* XMPPPlainAuthentication.m in Sources */,
 				DC30E6D1153E09D2001B9E6D /* XMPPXFacebookPlatformAuthentication.m in Sources */,
 				B6B5B42A16CE1AF2001A94BE /* ChatViewController.m in Sources */,
+				B680520A16CF83C900B81836 /* XMPPMessageArchiving.xcdatamodeld in Sources */,
+				B680520B16CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
+				B680520C16CF83C900B81836 /* XMPPMessageArchiving_Message_CoreDataObject.m in Sources */,
+				B680520D16CF83C900B81836 /* XMPPMessageArchivingCoreDataStorage.m in Sources */,
+				B680520E16CF83C900B81836 /* XMPPMessageArchiving.m in Sources */,
+				B680521216CF84CE00B81836 /* NSString+Utils.m in Sources */,
+				B680521516CF861800B81836 /* MessageViewTableCell.m in Sources */,
+				B680522116CF8D7F00B81836 /* XMPPMessage+XEP_0085.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1069,6 +1147,16 @@
 			);
 			currentVersion = 0704005C1347CB510092A737 /* XMPPvCard.xcdatamodel */;
 			path = XMPPvCard.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		B680520016CF83C900B81836 /* XMPPMessageArchiving.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B680520116CF83C900B81836 /* XMPPMessageArchiving.xcdatamodel */,
+			);
+			currentVersion = B680520116CF83C900B81836 /* XMPPMessageArchiving.xcdatamodel */;
+			path = XMPPMessageArchiving.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
