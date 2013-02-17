@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import "CoreDataTableViewController.h"
 
-@interface ChatViewController : UIViewController
+@interface ChatViewController : CoreDataTableViewController
 @property (strong, nonatomic) NSString* userName;
 @end

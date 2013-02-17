@@ -188,7 +188,7 @@
                                     <action selector="sendMessage:" destination="0uc-B8-TiM" eventType="touchUpInside" id="YIq-PA-26Y"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="QE1-b6-W3l">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="QE1-b6-W3l">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="297" id="Ogc-m6-Lac"/>
@@ -212,21 +212,21 @@
                             <constraint firstItem="QE1-b6-W3l" firstAttribute="centerX" secondItem="WqV-6u-M7V" secondAttribute="centerX" type="default" id="8yO-Pa-jHT"/>
                             <constraint firstAttribute="trailing" secondItem="Tex-1Q-1Wr" secondAttribute="trailing" constant="13" id="DQm-d1-GtU"/>
                             <constraint firstItem="QE1-b6-W3l" firstAttribute="top" secondItem="Tex-1Q-1Wr" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="NIG-fh-OQh"/>
+                            <constraint firstItem="Tex-1Q-1Wr" firstAttribute="top" secondItem="WqV-6u-M7V" secondAttribute="top" constant="8" id="QZf-SG-0Yj"/>
                             <constraint firstItem="b5c-zq-ORb" firstAttribute="leading" secondItem="WqV-6u-M7V" secondAttribute="leading" constant="10" id="Wus-J1-7Gi"/>
                             <constraint firstItem="b5c-zq-ORb" firstAttribute="top" secondItem="WqV-6u-M7V" secondAttribute="top" constant="9" id="ZQU-M3-Bih"/>
-                            <constraint firstItem="Tex-1Q-1Wr" firstAttribute="top" secondItem="b5c-zq-ORb" secondAttribute="top" type="default" id="jBT-pV-2Ay"/>
                             <constraint firstItem="Tex-1Q-1Wr" firstAttribute="baseline" secondItem="b5c-zq-ORb" secondAttribute="baseline" type="default" id="yf2-qz-gy1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qJb-wb-hb6"/>
                     <connections>
                         <outlet property="messageTextField" destination="b5c-zq-ORb" id="vRC-WW-lVw"/>
-                        <outlet property="tableView" destination="QE1-b6-W3l" id="WMG-FL-Kmf"/>
+                        <outlet property="tableView" destination="QE1-b6-W3l" id="FJi-1i-FxL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRc-wA-boM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="850" y="472"/>
+            <point key="canvasLocation" x="567" y="505"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ygT-pq-znQ">
@@ -248,27 +248,34 @@
         </scene>
     </scenes>
     <classes>
-        <class className="ChatViewController" superclassName="UIViewController">
+        <class className="ChatViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChatViewController.h"/>
             <relationships>
+                <relationship kind="action" name="sendMessage:"/>
                 <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CoreDataTableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
+            <relationships>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
+        </class>
+        <class className="MessageViewTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MessageViewTableCell.h"/>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
         <class className="RootViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="settings:"/>
-            </relationships>
         </class>
         <class className="SettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="done:"/>
                 <relationship kind="action" name="hideKeyboard:"/>
+                <relationship kind="action" name="logOut:"/>
                 <relationship kind="outlet" name="jidField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
             </relationships>

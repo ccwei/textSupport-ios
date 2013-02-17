@@ -39,6 +39,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		B678F24816D02E8B00F9208D /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B678F24616D02E8B00F9208D /* CoreDataTableViewController.m */; };
 		B680520A16CF83C900B81836 /* XMPPMessageArchiving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B680520016CF83C900B81836 /* XMPPMessageArchiving.xcdatamodeld */; };
 		B680520B16CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B680520316CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.m */; };
 		B680520C16CF83C900B81836 /* XMPPMessageArchiving_Message_CoreDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B680520516CF83C900B81836 /* XMPPMessageArchiving_Message_CoreDataObject.m */; };
@@ -171,6 +172,8 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RootViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* iPhoneXMPP-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iPhoneXMPP-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		B678F24616D02E8B00F9208D /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		B678F24716D02E8B00F9208D /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		B680520116CF83C900B81836 /* XMPPMessageArchiving.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XMPPMessageArchiving.xcdatamodel; sourceTree = "<group>"; };
 		B680520216CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPMessageArchiving_Contact_CoreDataObject.h; sourceTree = "<group>"; };
 		B680520316CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPMessageArchiving_Contact_CoreDataObject.m; sourceTree = "<group>"; };
@@ -180,8 +183,8 @@
 		B680520716CF83C900B81836 /* XMPPMessageArchivingCoreDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPMessageArchivingCoreDataStorage.m; sourceTree = "<group>"; };
 		B680520816CF83C900B81836 /* XMPPMessageArchiving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPMessageArchiving.h; sourceTree = "<group>"; };
 		B680520916CF83C900B81836 /* XMPPMessageArchiving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPMessageArchiving.m; sourceTree = "<group>"; };
-		B680521016CF84CD00B81836 /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
-		B680521116CF84CD00B81836 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
+		B680521016CF84CD00B81836 /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Utils.h"; path = "../NSString+Utils.h"; sourceTree = "<group>"; };
+		B680521116CF84CD00B81836 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Utils.m"; path = "../NSString+Utils.m"; sourceTree = "<group>"; };
 		B680521316CF861800B81836 /* MessageViewTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewTableCell.h; sourceTree = "<group>"; };
 		B680521416CF861800B81836 /* MessageViewTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewTableCell.m; sourceTree = "<group>"; };
 		B680521616CF883500B81836 /* ballon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballon2.png; sourceTree = "<group>"; };
@@ -449,6 +452,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B678F24616D02E8B00F9208D /* CoreDataTableViewController.m */,
+				B678F24716D02E8B00F9208D /* CoreDataTableViewController.h */,
+				B680521016CF84CD00B81836 /* NSString+Utils.h */,
+				B680521116CF84CD00B81836 /* NSString+Utils.m */,
 				1D3623240D0F684500981E51 /* iPhoneXMPPAppDelegate.h */,
 				1D3623250D0F684500981E51 /* iPhoneXMPPAppDelegate.m */,
 				B6B5B42816CE1AF2001A94BE /* ChatViewController.h */,
@@ -475,8 +482,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				B680521016CF84CD00B81836 /* NSString+Utils.h */,
-				B680521116CF84CD00B81836 /* NSString+Utils.m */,
 				DC1F98001152CAF300138A8F /* XMPP */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -1041,6 +1046,7 @@
 				B680521216CF84CE00B81836 /* NSString+Utils.m in Sources */,
 				B680521516CF861800B81836 /* MessageViewTableCell.m in Sources */,
 				B680522116CF8D7F00B81836 /* XMPPMessage+XEP_0085.m in Sources */,
+				B678F24816D02E8B00F9208D /* CoreDataTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

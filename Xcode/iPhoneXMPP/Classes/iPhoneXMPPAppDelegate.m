@@ -31,6 +31,8 @@
 - (void)goOnline;
 - (void)goOffline;
 
+@property (nonatomic, strong) XMPPMessageArchiving *xmppMessageArchiving;
+@property (nonatomic, strong) XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingCoreDataStorage;
 
 @end
 
@@ -98,6 +100,11 @@
 - (NSManagedObjectContext *)managedObjectContext_capabilities
 {
 	return [xmppCapabilitiesStorage mainThreadManagedObjectContext];
+}
+
+- (NSManagedObjectContext *)managedObjectContext_messageArchiving
+{
+    return [self.xmppMessageArchivingCoreDataStorage mainThreadManagedObjectContext];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -192,6 +199,13 @@
     xmppCapabilities.autoFetchHashedCapabilities = YES;
     xmppCapabilities.autoFetchNonHashedCapabilities = NO;
 
+    
+    //Setup MessageArchiving
+    self.xmppMessageArchivingCoreDataStorage = [XMPPMessageArchivingCoreDataStorage sharedInstance];
+    self.xmppMessageArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:self.xmppMessageArchivingCoreDataStorage];
+    [self.xmppMessageArchiving setClientSideMessageArchivingOnly:YES];
+    
+    
 	// Activate xmpp modules
 
 	[xmppReconnect         activate:xmppStream];
@@ -199,11 +213,13 @@
 	[xmppvCardTempModule   activate:xmppStream];
 	[xmppvCardAvatarModule activate:xmppStream];
 	[xmppCapabilities      activate:xmppStream];
+    [self.xmppMessageArchiving activate:xmppStream];
 
 	// Add ourself as a delegate to anything we may be interested in
 
 	[xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
 	[xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [self.xmppMessageArchiving addDelegate:self delegateQueue:dispatch_get_main_queue()];
 
 	// Optional:
 	// 
@@ -216,7 +232,7 @@
 	// 
 	// If you don't specify a hostPort, then the default (5222) will be used.
 	
-	[xmppStream setHostName:@"ec2-54-245-147-206.us-west-2.compute.amazonaws.com"];
+	[xmppStream setHostName:@"ec2-54-245-20-106.us-west-2.compute.amazonaws.com"];
 	[xmppStream setHostPort:5222];	
 	
 
@@ -229,12 +245,14 @@
 {
 	[xmppStream removeDelegate:self];
 	[xmppRoster removeDelegate:self];
+    [self.xmppMessageArchiving removeDelegate:self];
 	
 	[xmppReconnect         deactivate];
 	[xmppRoster            deactivate];
 	[xmppvCardTempModule   deactivate];
 	[xmppvCardAvatarModule deactivate];
 	[xmppCapabilities      deactivate];
+    [self.xmppMessageArchiving deactivate];
 	
 	[xmppStream disconnect];
 	
@@ -247,6 +265,8 @@
 	xmppvCardAvatarModule = nil;
 	xmppCapabilities = nil;
 	xmppCapabilitiesStorage = nil;
+    self.xmppMessageArchivingCoreDataStorage = nil;
+    self.xmppMessageArchiving = nil;
 }
 
 // It's easy to create XML elments to send and to read received XML elements.
@@ -471,7 +491,7 @@
 		XMPPUserCoreDataStorageObject *user = [xmppRosterStorage userForJID:[message from]
 		                                                         xmppStream:xmppStream
 		                                               managedObjectContext:[self managedObjectContext_roster]];
-		
+        
 		NSString *body = [[message elementForName:@"body"] stringValue];
 		NSString *displayName = [user displayName];
         
@@ -489,12 +509,12 @@
 
 		if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:displayName
+			/*UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:displayName
 															  message:body 
 															 delegate:nil 
 													cancelButtonTitle:@"Ok" 
 													otherButtonTitles:nil];
-			//[alertView show];
+			[alertView show];*/
 		}
 		else
 		{
@@ -556,12 +576,12 @@
 	
 	if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
 	{
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:displayName
+		/*UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:displayName
 		                                                    message:body 
 		                                                   delegate:nil 
 		                                          cancelButtonTitle:@"Not implemented"
 		                                          otherButtonTitles:nil];
-		//[alertView show];
+		[alertView show];*/
 	} 
 	else
 	{

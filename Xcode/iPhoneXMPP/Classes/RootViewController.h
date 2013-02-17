@@ -9,6 +9,4 @@
 	NSFetchedResultsController *fetchedResultsController;
 }
 
-- (IBAction)settings:(id)sender;
-
 @end
