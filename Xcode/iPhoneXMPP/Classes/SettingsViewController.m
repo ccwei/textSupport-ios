@@ -8,9 +8,12 @@
 
 #import "SettingsViewController.h"
 #import "iPhoneXMPPAppDelegate.h"
+#import "AFNetworking.h"
 
 NSString *const kXMPPmyJID = @"kXMPPmyJID";
+NSString *const kEmail = @"kEmail";
 NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
+NSString *const hostname = @"textsupport.no-ip.org";
 
 
 @implementation SettingsViewController
@@ -35,7 +38,7 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
-  jidField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
+  jidField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kEmail];
   passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyPassword];
 }
 
@@ -43,11 +46,11 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 #pragma mark Private
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (void)setUserDefaultField:(UITextField *)field forKey:(NSString *)key
+- (void)setUserDefaultString:(NSString *)string forKey:(NSString *)key
 {
-  if (field.text != nil) 
+  if (string != nil)
   {
-    [[NSUserDefaults standardUserDefaults] setObject:field.text forKey:key];
+    [[NSUserDefaults standardUserDefaults] setObject:string forKey:key];
   } else {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
   }
@@ -64,8 +67,37 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 
 - (IBAction)done:(id)sender
 {
-  [self setUserDefaultField:jidField forKey:kXMPPmyJID];
-  [self setUserDefaultField:passwordField forKey:kXMPPmyPassword];
+  NSString *realJID = [NSString stringWithFormat:@"%@@%@", [jidField.text stringByReplacingOccurrencesOfString:@"@" withString:@"_"], hostname];
+  [self setUserDefaultString:realJID forKey:kXMPPmyJID];
+  [self setUserDefaultString:jidField.text forKey:kEmail];
+  [self setUserDefaultString:passwordField.text forKey:kXMPPmyPassword];
+    
+    NSURL *aUrl = [NSURL URLWithString:@"http://textsupport.no-ip.org:1234/members"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl
+                                                           cachePolicy:NSURLCacheStorageNotAllowed
+                                                       timeoutInterval:60.0];
+    [request setHTTPMethod:@"POST"];
+    NSString *postString = [NSString stringWithFormat:@"member[email]=%@&member[password]=%@", jidField.text, passwordField.text];
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success");
+    } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failure");
+    }];
+    
+    [operation start];
+    
+    /*
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"response:%@, result: %@", response, JSON);
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"response:%d, result: %@", [response statusCode], [error description]);
+    }];
+    
+    [operation start];*/
 
   [self dismissModalViewControllerAnimated:YES];
 }

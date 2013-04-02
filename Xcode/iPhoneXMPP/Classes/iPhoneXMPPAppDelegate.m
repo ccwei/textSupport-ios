@@ -232,7 +232,7 @@
 	// 
 	// If you don't specify a hostPort, then the default (5222) will be used.
 	
-	[xmppStream setHostName:@"ec2-54-245-20-106.us-west-2.compute.amazonaws.com"];
+	[xmppStream setHostName:@"textsupport.no-ip.org"];
 	[xmppStream setHostPort:5222];	
 	
 

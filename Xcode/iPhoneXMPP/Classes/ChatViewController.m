@@ -109,6 +109,7 @@
 		
         NSXMLElement *message = [NSXMLElement elementWithName:@"message"];
         [message addAttributeWithName:@"type" stringValue:@"chat"];
+        NSLog(@"self.userName = %@", self.userName);
         [message addAttributeWithName:@"to" stringValue:self.userName];
         [message addChild:body];
 		
