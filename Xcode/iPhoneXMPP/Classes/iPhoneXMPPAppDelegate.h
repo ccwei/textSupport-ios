@@ -52,7 +52,7 @@
 @property (nonatomic, strong) IBOutlet SettingsViewController *settingsViewController;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *loginButton;
 
-@property (assign, nonatomic) id<MessageDelegate> messageDelegate;
+@property (weak, nonatomic) id<MessageDelegate> messageDelegate;
 
 - (NSManagedObjectContext *)managedObjectContext_roster;
 - (NSManagedObjectContext *)managedObjectContext_capabilities;
@@ -60,5 +60,7 @@
 
 - (BOOL)connect;
 - (void)disconnect;
+
+extern NSString* const newMessageNotificationName;
 
 @end

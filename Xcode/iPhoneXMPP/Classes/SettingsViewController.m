@@ -54,6 +54,7 @@ NSString *const hostname = @"textsupport.no-ip.org";
   } else {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
   }
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)clearUserDefaultFieldForKey:(NSString *)key

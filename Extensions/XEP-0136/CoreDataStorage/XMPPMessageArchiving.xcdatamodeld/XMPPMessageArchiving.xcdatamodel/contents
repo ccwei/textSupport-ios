@@ -16,12 +16,13 @@
         <attribute name="message" optional="YES" transient="YES" syncable="YES"/>
         <attribute name="messageStr" attributeType="String" syncable="YES"/>
         <attribute name="outgoing" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
+        <attribute name="seen" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="streamBareJidStr" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="thread" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" indexed="YES" syncable="YES"/>
     </entity>
     <elements>
         <element name="XMPPMessageArchiving_Contact_CoreDataObject" positionX="135" positionY="135" width="378" height="135"/>
-        <element name="XMPPMessageArchiving_Message_CoreDataObject" positionX="-227" positionY="189" width="290" height="195"/>
+        <element name="XMPPMessageArchiving_Message_CoreDataObject" positionX="-227" positionY="189" width="290" height="210"/>
     </elements>
 </model>

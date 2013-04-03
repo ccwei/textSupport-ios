@@ -25,6 +25,16 @@
 #pragma mark View lifecycle
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(newMessageReceived:)
+     name:newMessageNotificationName
+     object:nil];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
@@ -110,6 +120,27 @@
 #pragma mark UITableViewCell helpers
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+- (void) configureUnSeenMessagesForCell:(UITableViewCell *)cell user:(XMPPUserCoreDataStorageObject *)user
+{
+    XMPPMessageArchivingCoreDataStorage *macds = [[self appDelegate] xmppMessageArchivingCoreDataStorage];
+    NSManagedObjectContext *moc = [[self appDelegate] managedObjectContext_messageArchiving];
+    NSEntityDescription *entity = [macds messageEntity:moc];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bareJidStr=%@ and seen=nil", user.jidStr];
+    NSSortDescriptor *sd1 = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES];
+    
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sd1, nil];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setPredicate:predicate];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    
+    NSUInteger count = [moc countForFetchRequest:fetchRequest error:nil];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", count];
+}
+
 - (void)configurePhotoForCell:(UITableViewCell *)cell user:(XMPPUserCoreDataStorageObject *)user
 {
 	// Our xmppRosterStorage will cache photos as they arrive from the xmppvCardAvatarModule.
@@ -179,8 +210,9 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 	XMPPUserCoreDataStorageObject *user = [[self fetchedResultsController] objectAtIndexPath:indexPath];
 	
-	cell.textLabel.text = user.displayName;
+	cell.textLabel.text = [user.displayName substringToIndex:10];
 	[self configurePhotoForCell:cell user:user];
+    [self configureUnSeenMessagesForCell:cell user:user];
 	
 	return cell;
 }
@@ -217,4 +249,13 @@
    
 }
 
+- (void)newMessageReceived:(NSNotification*)notification
+{
+    [self.tableView reloadData];
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

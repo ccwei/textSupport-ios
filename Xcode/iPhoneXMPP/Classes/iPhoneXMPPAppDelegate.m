@@ -22,6 +22,7 @@
   static const int ddLogLevel = LOG_LEVEL_INFO;
 #endif
 
+NSString *const newMessageNotificationName = @"newMessageNotificationName";
 
 @interface iPhoneXMPPAppDelegate()
 
@@ -504,7 +505,10 @@
         [m setObject:from forKey:@"sender"];
         
         [self.messageDelegate newMessageReceived:m];
-
+        
+        NSString *key = @"message";
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObject:m forKey:key];
+        [[NSNotificationCenter defaultCenter] postNotificationName:newMessageNotificationName object:nil userInfo:dictionary];
         
 
 		if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)

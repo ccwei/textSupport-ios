@@ -4,9 +4,10 @@
 
 
 
-@interface RootViewController : UITableViewController <NSFetchedResultsControllerDelegate, SettingProtocol>
+@interface RootViewController : UIViewController <NSFetchedResultsControllerDelegate, SettingProtocol>
 {
 	NSFetchedResultsController *fetchedResultsController;
 }
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

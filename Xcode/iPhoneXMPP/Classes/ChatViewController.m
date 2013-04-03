@@ -72,8 +72,6 @@
 {
     XMPPMessageArchivingCoreDataStorage *macds = [[self appDelegate] xmppMessageArchivingCoreDataStorage];
     NSManagedObjectContext *moc = [[self appDelegate] managedObjectContext_messageArchiving];
-//    NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPMessageArchiving_Message_CoreDataObject"
-//                                              inManagedObjectContext:moc];
     NSEntityDescription *entity = [macds messageEntity:moc];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bareJidStr=%@", self.userName];
     NSLog(@"Username = %@", self.userName);
@@ -92,6 +90,9 @@
                                                                           sectionNameKeyPath:nil
                                                                                cacheName:nil];
 
+    for (XMPPMessageArchiving_Message_CoreDataObject *message in [self.fetchedResultsController fetchedObjects]) {
+        message.seen = YES;
+    }
     NSLog(@"%@", [self.fetchedResultsController fetchedObjects]);
     NSError *error = nil;
     if (error) {
@@ -149,7 +150,6 @@ static CGFloat padding = 20.0;
     MessageViewTableCell *cell = (MessageViewTableCell *)[tableView dequeueReusableCellWithIdentifier:@"MessageCellIdentifier" forIndexPath:indexPath];
     
     XMPPMessageArchiving_Message_CoreDataObject *msg = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
     NSString *sender = [msg.message.from bare];
     NSString *message = msg.body;
     NSString *time = [msg.timestamp description];
