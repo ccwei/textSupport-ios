@@ -76,6 +76,7 @@
 		B6B9F36A16E2EC5A0065F72E /* navigationBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B9F36916E2EC5A0065F72E /* navigationBar.png */; };
 		B6B9F36D16E2ECA90065F72E /* MoodRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B9F36C16E2ECA90065F72E /* MoodRatingViewController.m */; };
 		B6B9F37016E2ED770065F72E /* FaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B9F36F16E2ED770065F72E /* FaceView.m */; };
+		B6C6A985170D2794001D9883 /* ListenerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C6A984170D2794001D9883 /* ListenerInfoViewController.m */; };
 		DC1CF89B1361F28000E71363 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8901361F28000E71363 /* NSString+DDXML.m */; };
 		DC1CF89D1361F28000E71363 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8941361F28000E71363 /* DDXMLDocument.m */; };
 		DC1CF89E1361F28000E71363 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8961361F28000E71363 /* DDXMLElement.m */; };
@@ -255,6 +256,8 @@
 		B6B9F36C16E2ECA90065F72E /* MoodRatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoodRatingViewController.m; path = ../MoodRatingViewController.m; sourceTree = "<group>"; };
 		B6B9F36E16E2ED770065F72E /* FaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceView.h; sourceTree = "<group>"; };
 		B6B9F36F16E2ED770065F72E /* FaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceView.m; sourceTree = "<group>"; };
+		B6C6A983170D2794001D9883 /* ListenerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListenerInfoViewController.h; sourceTree = "<group>"; };
+		B6C6A984170D2794001D9883 /* ListenerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListenerInfoViewController.m; sourceTree = "<group>"; };
 		DC1CF88F1361F28000E71363 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
 		DC1CF8901361F28000E71363 /* NSString+DDXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DDXML.m"; sourceTree = "<group>"; };
 		DC1CF8911361F28000E71363 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
@@ -529,6 +532,8 @@
 				B680521416CF861800B81836 /* MessageViewTableCell.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
+				B6C6A983170D2794001D9883 /* ListenerInfoViewController.h */,
+				B6C6A984170D2794001D9883 /* ListenerInfoViewController.m */,
 				0704FFC5134794020092A737 /* SettingsViewController.h */,
 				0704FFC6134794020092A737 /* SettingsViewController.m */,
 				B6B5B42C16CE1B18001A94BE /* Storyboard.storyboard */,
@@ -1185,6 +1190,7 @@
 				B6B9F36D16E2ECA90065F72E /* MoodRatingViewController.m in Sources */,
 				B6B9F37016E2ED770065F72E /* FaceView.m in Sources */,
 				B6237BD816EECF5E00D6E723 /* CustomTabBarController.m in Sources */,
+				B6C6A985170D2794001D9883 /* ListenerInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

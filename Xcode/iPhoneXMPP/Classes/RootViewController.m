@@ -241,7 +241,7 @@
         if (indexPath) {
             if ([segue.identifier isEqualToString:@"Show Messages"]) {
                 XMPPUserCoreDataStorageObject *user = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-                [segue.destinationViewController performSelector:@selector(setUserName:) withObject:[user displayName]];
+                [segue.destinationViewController performSelector:@selector(setUserName:) withObject:[user jidStr]];
                 //[segue.destinationViewController performSelector:@selector(setDelegate:) withObject:self];
             }
         }

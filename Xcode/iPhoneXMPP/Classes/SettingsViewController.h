@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
+
 extern NSString *const kXMPPmyJID;
 extern NSString *const kXMPPmyPassword;
 
