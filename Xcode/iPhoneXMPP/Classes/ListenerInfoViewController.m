@@ -83,6 +83,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Show Messages"]) {
+        NSLog(@"set listener's jidstr = %@", [self.listener jidStr]);
         [segue.destinationViewController performSelector:@selector(setUserName:) withObject:[self.listener jidStr]];
         //[segue.destinationViewController performSelector:@selector(setDelegate:) withObject:self];
     }

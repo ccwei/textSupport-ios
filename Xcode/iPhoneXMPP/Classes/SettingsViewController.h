@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
-
 extern NSString *const kXMPPmyJID;
 extern NSString *const kXMPPmyPassword;
+extern NSString *const kHostname;
+extern NSString *const kEmail;
 
 @protocol SettingProtocol <NSObject>
 

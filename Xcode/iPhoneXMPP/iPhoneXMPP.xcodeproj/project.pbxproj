@@ -51,6 +51,14 @@
 		B6237BF016EED3DF00D6E723 /* startle.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B6237BE916EED3DF00D6E723 /* startle.PNG */; };
 		B6237BF116EED3DF00D6E723 /* sweat.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B6237BEA16EED3DF00D6E723 /* sweat.PNG */; };
 		B6237BF316EED65500D6E723 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = B6237BF216EED65500D6E723 /* heart.png */; };
+		B64403B3171BBB4E00D9D306 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */; };
+		B64403B6171BD4AD00D9D306 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403B5171BD4AD00D9D306 /* Utilities.m */; };
+		B64403C5171CBD0500D9D306 /* WEPopoverAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403B9171CBD0500D9D306 /* WEPopoverAppDelegate.m */; };
+		B64403C6171CBD0500D9D306 /* WEPopoverContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403BB171CBD0500D9D306 /* WEPopoverContainerView.m */; };
+		B64403C7171CBD0500D9D306 /* WEPopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403BD171CBD0500D9D306 /* WEPopoverContentViewController.m */; };
+		B64403C8171CBD0500D9D306 /* WEPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403BF171CBD0500D9D306 /* WEPopoverController.m */; };
+		B64403C9171CBD0500D9D306 /* WEPopoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403C2171CBD0500D9D306 /* WEPopoverTableViewController.m */; };
+		B64403CA171CBD0500D9D306 /* WEPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403C4171CBD0500D9D306 /* WEPopoverViewController.m */; };
 		B678F24816D02E8B00F9208D /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B678F24616D02E8B00F9208D /* CoreDataTableViewController.m */; };
 		B680520A16CF83C900B81836 /* XMPPMessageArchiving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B680520016CF83C900B81836 /* XMPPMessageArchiving.xcdatamodeld */; };
 		B680520B16CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B680520316CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.m */; };
@@ -210,6 +218,23 @@
 		B6237BE916EED3DF00D6E723 /* startle.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startle.PNG; sourceTree = "<group>"; };
 		B6237BEA16EED3DF00D6E723 /* sweat.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sweat.PNG; sourceTree = "<group>"; };
 		B6237BF216EED65500D6E723 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		B64403B1171BBB4E00D9D306 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
+		B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
+		B64403B4171BD4AD00D9D306 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		B64403B5171BD4AD00D9D306 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		B64403B8171CBD0500D9D306 /* WEPopoverAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverAppDelegate.h; sourceTree = "<group>"; };
+		B64403B9171CBD0500D9D306 /* WEPopoverAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverAppDelegate.m; sourceTree = "<group>"; };
+		B64403BA171CBD0500D9D306 /* WEPopoverContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContainerView.h; sourceTree = "<group>"; };
+		B64403BB171CBD0500D9D306 /* WEPopoverContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContainerView.m; sourceTree = "<group>"; };
+		B64403BC171CBD0500D9D306 /* WEPopoverContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverContentViewController.h; sourceTree = "<group>"; };
+		B64403BD171CBD0500D9D306 /* WEPopoverContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverContentViewController.m; sourceTree = "<group>"; };
+		B64403BE171CBD0500D9D306 /* WEPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverController.h; sourceTree = "<group>"; };
+		B64403BF171CBD0500D9D306 /* WEPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverController.m; sourceTree = "<group>"; };
+		B64403C0171CBD0500D9D306 /* WEPopoverParentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverParentView.h; sourceTree = "<group>"; };
+		B64403C1171CBD0500D9D306 /* WEPopoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverTableViewController.h; sourceTree = "<group>"; };
+		B64403C2171CBD0500D9D306 /* WEPopoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverTableViewController.m; sourceTree = "<group>"; };
+		B64403C3171CBD0500D9D306 /* WEPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEPopoverViewController.h; sourceTree = "<group>"; };
+		B64403C4171CBD0500D9D306 /* WEPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEPopoverViewController.m; sourceTree = "<group>"; };
 		B678F24616D02E8B00F9208D /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		B678F24716D02E8B00F9208D /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		B680520116CF83C900B81836 /* XMPPMessageArchiving.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XMPPMessageArchiving.xcdatamodel; sourceTree = "<group>"; };
@@ -516,6 +541,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B64403B1171BBB4E00D9D306 /* RegistrationViewController.h */,
+				B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */,
 				B6B9F36E16E2ED770065F72E /* FaceView.h */,
 				B6B9F36F16E2ED770065F72E /* FaceView.m */,
 				B6B9F36B16E2ECA90065F72E /* MoodRatingViewController.h */,
@@ -536,6 +563,8 @@
 				B6C6A984170D2794001D9883 /* ListenerInfoViewController.m */,
 				0704FFC5134794020092A737 /* SettingsViewController.h */,
 				0704FFC6134794020092A737 /* SettingsViewController.m */,
+				B64403B4171BD4AD00D9D306 /* Utilities.h */,
+				B64403B5171BD4AD00D9D306 /* Utilities.m */,
 				B6B5B42C16CE1B18001A94BE /* Storyboard.storyboard */,
 				B6237BD616EECF5E00D6E723 /* CustomTabBarController.h */,
 				B6237BD716EECF5E00D6E723 /* CustomTabBarController.m */,
@@ -554,6 +583,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				B64403B7171CBCEF00D9D306 /* WEPopover */,
 				B6823A7D16D19DC8009D7086 /* AFNetworking */,
 				DC1F98001152CAF300138A8F /* XMPP */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -621,6 +651,26 @@
 				B6237BEA16EED3DF00D6E723 /* sweat.PNG */,
 			);
 			path = faces;
+			sourceTree = "<group>";
+		};
+		B64403B7171CBCEF00D9D306 /* WEPopover */ = {
+			isa = PBXGroup;
+			children = (
+				B64403B8171CBD0500D9D306 /* WEPopoverAppDelegate.h */,
+				B64403B9171CBD0500D9D306 /* WEPopoverAppDelegate.m */,
+				B64403BA171CBD0500D9D306 /* WEPopoverContainerView.h */,
+				B64403BB171CBD0500D9D306 /* WEPopoverContainerView.m */,
+				B64403BC171CBD0500D9D306 /* WEPopoverContentViewController.h */,
+				B64403BD171CBD0500D9D306 /* WEPopoverContentViewController.m */,
+				B64403BE171CBD0500D9D306 /* WEPopoverController.h */,
+				B64403BF171CBD0500D9D306 /* WEPopoverController.m */,
+				B64403C0171CBD0500D9D306 /* WEPopoverParentView.h */,
+				B64403C1171CBD0500D9D306 /* WEPopoverTableViewController.h */,
+				B64403C2171CBD0500D9D306 /* WEPopoverTableViewController.m */,
+				B64403C3171CBD0500D9D306 /* WEPopoverViewController.h */,
+				B64403C4171CBD0500D9D306 /* WEPopoverViewController.m */,
+			);
+			name = WEPopover;
 			sourceTree = "<group>";
 		};
 		B68051FE16CF83C900B81836 /* XEP-0136 */ = {
@@ -1191,6 +1241,14 @@
 				B6B9F37016E2ED770065F72E /* FaceView.m in Sources */,
 				B6237BD816EECF5E00D6E723 /* CustomTabBarController.m in Sources */,
 				B6C6A985170D2794001D9883 /* ListenerInfoViewController.m in Sources */,
+				B64403B3171BBB4E00D9D306 /* RegistrationViewController.m in Sources */,
+				B64403B6171BD4AD00D9D306 /* Utilities.m in Sources */,
+				B64403C5171CBD0500D9D306 /* WEPopoverAppDelegate.m in Sources */,
+				B64403C6171CBD0500D9D306 /* WEPopoverContainerView.m in Sources */,
+				B64403C7171CBD0500D9D306 /* WEPopoverContentViewController.m in Sources */,
+				B64403C8171CBD0500D9D306 /* WEPopoverController.m in Sources */,
+				B64403C9171CBD0500D9D306 /* WEPopoverTableViewController.m in Sources */,
+				B64403CA171CBD0500D9D306 /* WEPopoverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

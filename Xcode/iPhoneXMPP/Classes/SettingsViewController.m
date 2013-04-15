@@ -9,11 +9,12 @@
 #import "SettingsViewController.h"
 #import "iPhoneXMPPAppDelegate.h"
 #import "AFNetworking.h"
+#import "Utilities.h"
 
 NSString *const kXMPPmyJID = @"kXMPPmyJID";
 NSString *const kEmail = @"kEmail";
 NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
-NSString *const hostname = @"textsupport.no-ip.org";
+NSString *const kHostname = @"textsupport.no-ip.org";
 
 
 @implementation SettingsViewController
@@ -42,36 +43,17 @@ NSString *const hostname = @"textsupport.no-ip.org";
   passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyPassword];
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark Private
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-- (void)setUserDefaultString:(NSString *)string forKey:(NSString *)key
-{
-  if (string != nil)
-  {
-    [[NSUserDefaults standardUserDefaults] setObject:string forKey:key];
-  } else {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
-  }
-  [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (void)clearUserDefaultFieldForKey:(NSString *)key
-{
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Actions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (IBAction)done:(id)sender
+- (IBAction)login
 {
-  NSString *realJID = [NSString stringWithFormat:@"%@@%@", [jidField.text stringByReplacingOccurrencesOfString:@"@" withString:@"_"], hostname];
-  [self setUserDefaultString:realJID forKey:kXMPPmyJID];
-  [self setUserDefaultString:jidField.text forKey:kEmail];
-  [self setUserDefaultString:passwordField.text forKey:kXMPPmyPassword];
+  NSString *realJID = [NSString stringWithFormat:@"%@@%@", [jidField.text stringByReplacingOccurrencesOfString:@"@" withString:@"_"], kHostname];
+  [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
+  [Utilities setUserDefaultString:jidField.text forKey:kEmail];
+  [Utilities setUserDefaultString:passwordField.text forKey:kXMPPmyPassword];
     
     NSURL *aUrl = [NSURL URLWithString:@"http://textsupport.no-ip.org:1234/members"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl
@@ -84,34 +66,16 @@ NSString *const hostname = @"textsupport.no-ip.org";
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Success");
+        [[self appDelegate] connect];
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure");
     }];
     
     [operation start];
-    
-    /*
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSLog(@"response:%@, result: %@", response, JSON);
-        
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"response:%d, result: %@", [response statusCode], [error description]);
-    }];
-    
-    [operation start];*/
 
-  [self dismissModalViewControllerAnimated:YES];
+  //[self dismissModalViewControllerAnimated:YES];
 }
 
-- (IBAction)logOut:(id)sender
-{
-    [self.delegate removeUserData];
-    [self clearUserDefaultFieldForKey:kXMPPmyJID];
-    [self clearUserDefaultFieldForKey:kXMPPmyPassword];
-    [[self appDelegate] disconnect];
-
-    [self dismissModalViewControllerAnimated:YES];
-}
 - (IBAction)hideKeyboard:(id)sender {
   [sender resignFirstResponder];
   [self done:sender];

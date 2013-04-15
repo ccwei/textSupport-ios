@@ -39,27 +39,27 @@
 {
 	[super viewWillAppear:animated];
   
-	UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 400, 44)];
-	titleLabel.backgroundColor = [UIColor clearColor];
-	titleLabel.textColor = [UIColor whiteColor];
-	titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
-	titleLabel.numberOfLines = 1;
-	titleLabel.adjustsFontSizeToFitWidth = YES;
-	titleLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-	titleLabel.textAlignment = UITextAlignmentCenter;
-
-	if ([[self appDelegate] connect]) 
-	{
-		titleLabel.text = [[[[self appDelegate] xmppStream] myJID] bare];
-	} else
-	{
-		titleLabel.text = @"No JID";
-	}
-	
-	[titleLabel sizeToFit];
+//	UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 400, 44)];
+//	titleLabel.backgroundColor = [UIColor clearColor];
+//	titleLabel.textColor = [UIColor whiteColor];
+//	titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
+//	titleLabel.numberOfLines = 1;
+//	titleLabel.adjustsFontSizeToFitWidth = YES;
+//	titleLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+//	titleLabel.textAlignment = UITextAlignmentCenter;
+//
+//	if ([[self appDelegate] connect]) 
+//	{
+//		titleLabel.text = [[[[self appDelegate] xmppStream] myJID] bare];
+//	} else
+//	{
+//		titleLabel.text = @"No JID";
+//	}
+//	
+//	[titleLabel sizeToFit];
     [self.tableView reloadData];
 
-	self.navigationItem.titleView = titleLabel;
+//	self.navigationItem.titleView = titleLabel;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -246,7 +246,21 @@
             }
         }
     }
-   
+}
+
+- (IBAction)unwindFrom:(UIStoryboardSegue *)unwindSegue
+{
+    
+}
+
+- (IBAction)newChat:(UIButton *)sender {
+    NSString *myJID = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
+	NSString *myPassword = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyPassword];
+    if (!myJID) {
+        [self performSegueWithIdentifier:@"Show Login" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"Show Listener" sender:self];
+    }
 }
 
 - (void)newMessageReceived:(NSNotification*)notification
@@ -258,4 +272,25 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+
+//Settings
+
+- (void)clearUserDefaultFieldForKey:(NSString *)key
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+}
+
+
+- (IBAction)logOut:(id)sender
+{
+    [self removeUserData];
+    [self clearUserDefaultFieldForKey:kXMPPmyJID];
+    [self clearUserDefaultFieldForKey:kXMPPmyPassword];
+    [[self appDelegate] disconnect];
+    
+    //[self dismissModalViewControllerAnimated:YES];
+}
+
+
 @end
