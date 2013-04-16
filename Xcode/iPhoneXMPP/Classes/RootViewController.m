@@ -38,6 +38,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
+    //Hide or display logout button
+    NSString *myJID = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
+    if (!myJID) {
+        self.logoutButton.enabled = NO;
+    } else {
+        self.logoutButton.enabled = YES;
+    }
   
 //	UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 400, 44)];
 //	titleLabel.backgroundColor = [UIColor clearColor];
@@ -89,6 +96,9 @@
 		NSArray *sortDescriptors = [NSArray arrayWithObjects:sd1, sd2, nil];
 		
 		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSString* myJID = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"jidStr != %@", myJID];
+        [fetchRequest setPredicate:predicate];
 		[fetchRequest setEntity:entity];
 		[fetchRequest setSortDescriptors:sortDescriptors];
 		[fetchRequest setFetchBatchSize:10];
@@ -210,7 +220,7 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 	XMPPUserCoreDataStorageObject *user = [[self fetchedResultsController] objectAtIndexPath:indexPath];
 	
-	cell.textLabel.text = [user.displayName substringToIndex:10];
+	cell.textLabel.text = user.displayName;
 	[self configurePhotoForCell:cell user:user];
     [self configureUnSeenMessagesForCell:cell user:user];
 	
@@ -293,4 +303,8 @@
 }
 
 
+- (void)viewDidUnload {
+    [self setLogoutButton:nil];
+    [super viewDidUnload];
+}
 @end

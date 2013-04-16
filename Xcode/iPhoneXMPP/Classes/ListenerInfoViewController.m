@@ -11,7 +11,11 @@
 #import "AFNetworking.h"
 
 @interface ListenerInfoViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *genderLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UITextView *descTextView;
 @property (strong, nonatomic) XMPPUserCoreDataStorageObject *listener;
+
 @end
 
 @implementation ListenerInfoViewController
@@ -45,7 +49,9 @@
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSLog(@"listenerJid: %@", [JSON valueForKeyPath:@"listenerJid"]);
-        
+        self.nameLabel.text = [JSON valueForKeyPath:@"nickname"];
+        self.genderLabel.text = [JSON valueForKeyPath:@"gender"];
+        self.descTextView.text = [JSON valueForKeyPath:@"desc"];
         
     self.listener = [[[self appDelegate] xmppRosterStorage] userForJID:[XMPPJID jidWithString:[JSON valueForKeyPath:@"listenerJid"]] xmppStream:[[self appDelegate] xmppStream] managedObjectContext:[[self appDelegate] managedObjectContext_roster]];
         
@@ -87,5 +93,11 @@
         [segue.destinationViewController performSelector:@selector(setUserName:) withObject:[self.listener jidStr]];
         //[segue.destinationViewController performSelector:@selector(setDelegate:) withObject:self];
     }
+}
+- (void)viewDidUnload {
+    [self setNameLabel:nil];
+    [self setGenderLabel:nil];
+    [self setDescTextView:nil];
+    [super viewDidUnload];
 }
 @end

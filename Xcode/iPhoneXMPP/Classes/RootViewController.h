@@ -9,5 +9,6 @@
 	NSFetchedResultsController *fetchedResultsController;
 }
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
