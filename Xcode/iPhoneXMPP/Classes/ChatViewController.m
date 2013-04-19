@@ -198,6 +198,13 @@ static CGFloat padding = 20.0;
     return height;
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    for (XMPPMessageArchiving_Message_CoreDataObject *message in [self.fetchedResultsController fetchedObjects]) {
+        message.seen = YES;
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -193,7 +193,7 @@
 		{
 			case 0  : return @"Available";
 			case 1  : return @"Away";
-			default : return @"Offline";
+			default : return @"Listeners";
 		}
 	}
 	
@@ -265,7 +265,6 @@
 
 - (IBAction)newChat:(UIButton *)sender {
     NSString *myJID = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
-	NSString *myPassword = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyPassword];
     if (!myJID) {
         [self performSegueWithIdentifier:@"Show Login" sender:self];
     } else {

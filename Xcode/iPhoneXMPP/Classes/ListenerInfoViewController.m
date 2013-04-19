@@ -9,13 +9,14 @@
 #import "ListenerInfoViewController.h"
 #import "iPhoneXMPPAppDelegate.h"
 #import "AFNetworking.h"
+#import "MBProgressHUD.h"
 
 @interface ListenerInfoViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descTextView;
 @property (strong, nonatomic) XMPPUserCoreDataStorageObject *listener;
-
+@property (strong, nonatomic) MBProgressHUD *HUD;
 @end
 
 @implementation ListenerInfoViewController
@@ -45,19 +46,24 @@
 
     //AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
-
-    
+    self.HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	[self.navigationController.view addSubview:self.HUD];
+	self.HUD.labelText = @"Loading";
+	[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+	
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSLog(@"listenerJid: %@", [JSON valueForKeyPath:@"listenerJid"]);
         self.nameLabel.text = [JSON valueForKeyPath:@"nickname"];
         self.genderLabel.text = [JSON valueForKeyPath:@"gender"];
         self.descTextView.text = [JSON valueForKeyPath:@"desc"];
         
-    self.listener = [[[self appDelegate] xmppRosterStorage] userForJID:[XMPPJID jidWithString:[JSON valueForKeyPath:@"listenerJid"]] xmppStream:[[self appDelegate] xmppStream] managedObjectContext:[[self appDelegate] managedObjectContext_roster]];
+        NSLog(@"set listener");
+        self.listener = [[[self appDelegate] xmppRosterStorage] userForJID:[XMPPJID jidWithString:[JSON valueForKeyPath:@"listenerJid"]] xmppStream:[[self appDelegate] xmppStream] managedObjectContext:[[self appDelegate] managedObjectContext_roster]];
         
-        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"IP Address: %@", [JSON valueForKeyPath:@"origin"]);
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 
     /*

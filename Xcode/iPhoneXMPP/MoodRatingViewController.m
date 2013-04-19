@@ -67,6 +67,13 @@
 
 }
 
+- (void)hidePopover
+{
+    if([self.moodPopover isPopoverVisible]) {
+        [self.moodPopover dismissPopoverAnimated:NO];
+    }
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -106,6 +113,7 @@
 {
     CGPoint translation = [gestureRecognizer translationInView:self.view];
     if (gestureRecognizer.state == UIGestureRecognizerStateChanged){
+        [self hidePopover];
         CGPoint location = [gestureRecognizer translationInView:self.view];
         self.heartImageView.center = CGPointMake(self.heartImageView.center.x + translation.x,
                                        self.heartImageView.center.y + translation.y);
@@ -113,7 +121,7 @@
          [gestureRecognizer setTranslation:CGPointZero inView:self.view];
     } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         CGPoint p = [gestureRecognizer locationInView:self.view];
-        [self addPopOverAt:CGRectMake(p.x, p.y, 1, 1)];
+        [self addPopOverAt:CGRectMake(p.x, p.y - 20, 1, 1)];
     }
     
     for (UIImageView *face in self.faceviewCollection) {
