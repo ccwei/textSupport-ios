@@ -62,7 +62,7 @@
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"IP Address: %@", [JSON valueForKeyPath:@"origin"]);
+        NSLog(@"Fail to get listener, maybe server error!");
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 

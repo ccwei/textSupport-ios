@@ -21,5 +21,9 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-
++ (void)setUserDefaultBOOL:(BOOL)b forKey:(NSString *)key
+{
+    [[NSUserDefaults standardUserDefaults] setBool:b forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 @end

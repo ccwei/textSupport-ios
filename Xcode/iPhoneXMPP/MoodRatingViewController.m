@@ -7,9 +7,10 @@
 //
 
 #import "MoodRatingViewController.h"
-#import "FaceView.h"
+#import "SaturationView.h"
 #import "WEPopoverController.h"
 #import "UIPlaceHolderTextView.h"
+#import "SettingsViewController.h"
 
 @interface MoodRatingViewController ()<PopoverControllerDelegate, UITextViewDelegate>
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *faceviewCollection;
@@ -17,9 +18,23 @@
 @property (strong, nonatomic) WEPopoverController *moodPopover;
 @property (strong, nonatomic) UIPlaceHolderTextView *textView;
 @property (strong, nonatomic) UIButton *saveButton;
+@property (nonatomic) float saturation;
+@property (strong, nonatomic) SaturationView *heartView;
 @end
 
 @implementation MoodRatingViewController
+
+- (SaturationView *)heartView
+{
+    if (!_heartView) {
+        _heartView = [[SaturationView alloc] initWithFrame:CGRectZero];
+        _heartView.image = [UIImage imageNamed:@"heart.png"];
+        _heartView.frame = CGRectMake(0, 0, _heartView.image.size.width, _heartView.image.size.height);
+        _heartView.center = CGPointMake(160, 180); // put it mid-screen
+        _heartView.saturation = 0.5; // desaturate by 20%,
+    }
+    return _heartView;
+}
 
 - (UIButton *)saveButton
 {
@@ -92,45 +107,14 @@
         [self.navigationController.navigationBar setBackgroundImage:bgImage forBarMetrics:UIBarMetricsDefault];
     }
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
-    
-    for (UIImageView *face in self.faceviewCollection) {
-        face.alpha = 0.3;
-    }
-    
-    UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveHeart:)];
-    
-    [self.heartImageView addGestureRecognizer:gestureRecognizer];
+     
+    [self.view addSubview:self.heartView];
     
 }
 
--(int)distanceFrom:(CGPoint)point1 to:(CGPoint)point2{
-    CGFloat xDist = ((point2.x) - (point1.x));
-    CGFloat yDist = ((point2.y) - (point1.y));
-    return (sqrt((xDist * xDist) + (yDist * yDist)));
-}
 
-- (void)moveHeart:(UIPanGestureRecognizer *)gestureRecognizer
-{
-    CGPoint translation = [gestureRecognizer translationInView:self.view];
-    if (gestureRecognizer.state == UIGestureRecognizerStateChanged){
-        [self hidePopover];
-        CGPoint location = [gestureRecognizer translationInView:self.view];
-        self.heartImageView.center = CGPointMake(self.heartImageView.center.x + translation.x,
-                                       self.heartImageView.center.y + translation.y);
-        NSLog(@"%@", NSStringFromCGPoint(location));
-         [gestureRecognizer setTranslation:CGPointZero inView:self.view];
-    } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        CGPoint p = [gestureRecognizer locationInView:self.view];
-        [self addPopOverAt:CGRectMake(p.x, p.y - 20, 1, 1)];
-    }
-    
-    for (UIImageView *face in self.faceviewCollection) {
-        int distance = [self distanceFrom:face.center to:self.heartImageView.center];
-
-        face.alpha = distance * (-0.00625) + 1;
-        //NSLog(@"distance = %f", face.alpha);
-    }
-    
+- (IBAction)valueChanged:(UISlider *)sender {
+    self.heartView.saturation = sender.value;
 }
      
 - (void)didReceiveMemoryWarning
@@ -246,4 +230,27 @@
     return YES;
 }
 
+- (IBAction)saveButtonPressed:(UIButton *)sender {
+    NSString *myJID = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
+    if (!myJID) {
+        [self performSegueWithIdentifier:@"Show Login" sender:self];
+    } else {
+        NSLog(@"isListener = %d", [[NSUserDefaults standardUserDefaults] boolForKey:kIsListener]);
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsListener]) {
+            [self performSegueWithIdentifier:@"Show ChatHistory" sender:self];
+        } else {
+            [self performSegueWithIdentifier:@"Show Listener" sender:self];
+        }
+    }
+}
+
+- (IBAction)unwindFromLogin:(UIStoryboardSegue *)unwindSegue
+{
+    //[self performSegueWithIdentifier:@"Show Listener" sender:self];
+}
+
+- (IBAction)unwindFromRegistration:(UIStoryboardSegue *)unwindSegue
+{
+    //[self performSegueWithIdentifier:@"Show Listener" sender:self];
+}
 @end

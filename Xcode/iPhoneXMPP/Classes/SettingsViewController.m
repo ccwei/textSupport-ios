@@ -15,7 +15,7 @@ NSString *const kXMPPmyJID = @"kXMPPmyJID";
 NSString *const kEmail = @"kEmail";
 NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 NSString *const kHostname = @"textsupport.no-ip.org";
-
+NSString *const kIsListener = @"kIsListener";
 
 @implementation SettingsViewController
 
@@ -62,17 +62,23 @@ NSString *const kHostname = @"textsupport.no-ip.org";
     [request setHTTPMethod:@"POST"];
     NSString *postString = [NSString stringWithFormat:@"member[email]=%@&member[password]=%@", jidField.text, passwordField.text];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Success");
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+      
+        NSLog(@"JSON = %@", JSON);
+        NSLog(@"%@", [JSON valueForKeyPath:@"isListener"]);
+        self.isListener = [[JSON valueForKeyPath:@"isListener"] boolValue];
+
+        [Utilities setUserDefaultBOOL:self.isListener forKey:kIsListener];
         [[self appDelegate] connect];
-    } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failure");
+         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+             NSLog(@"Failure");
     }];
-    
+
     [operation start];
 
+    [self performSegueWithIdentifier:@"LoginUnwind" sender:self];
+    
   //[self dismissModalViewControllerAnimated:YES];
 }
 

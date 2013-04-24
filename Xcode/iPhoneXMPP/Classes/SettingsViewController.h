@@ -13,6 +13,7 @@ extern NSString *const kXMPPmyJID;
 extern NSString *const kXMPPmyPassword;
 extern NSString *const kHostname;
 extern NSString *const kEmail;
+extern NSString *const kIsListener;
 
 @protocol SettingProtocol <NSObject>
 
@@ -27,6 +28,7 @@ extern NSString *const kEmail;
 @property (nonatomic,assign) id<SettingProtocol> delegate;
 @property (nonatomic,strong) IBOutlet UITextField *jidField;
 @property (nonatomic,strong) IBOutlet UITextField *passwordField;
+@property BOOL isListener;
 
 - (IBAction)done:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;

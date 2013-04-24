@@ -51,6 +51,7 @@
 		B6237BF016EED3DF00D6E723 /* startle.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B6237BE916EED3DF00D6E723 /* startle.PNG */; };
 		B6237BF116EED3DF00D6E723 /* sweat.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B6237BEA16EED3DF00D6E723 /* sweat.PNG */; };
 		B6237BF316EED65500D6E723 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = B6237BF216EED65500D6E723 /* heart.png */; };
+		B6420E411720FEC100BB35A8 /* SaturationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6420E401720FEC100BB35A8 /* SaturationView.m */; };
 		B64403B3171BBB4E00D9D306 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */; };
 		B64403B6171BD4AD00D9D306 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403B5171BD4AD00D9D306 /* Utilities.m */; };
 		B64403C5171CBD0500D9D306 /* WEPopoverAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403B9171CBD0500D9D306 /* WEPopoverAppDelegate.m */; };
@@ -95,8 +96,8 @@
 		B6B5B42D16CE1B18001A94BE /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6B5B42C16CE1B18001A94BE /* Storyboard.storyboard */; };
 		B6B9F36A16E2EC5A0065F72E /* navigationBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B9F36916E2EC5A0065F72E /* navigationBar.png */; };
 		B6B9F36D16E2ECA90065F72E /* MoodRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B9F36C16E2ECA90065F72E /* MoodRatingViewController.m */; };
-		B6B9F37016E2ED770065F72E /* FaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B9F36F16E2ED770065F72E /* FaceView.m */; };
 		B6C6A985170D2794001D9883 /* ListenerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C6A984170D2794001D9883 /* ListenerInfoViewController.m */; };
+		B6CD580E172721F200B80332 /* ChatHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD580D172721F200B80332 /* ChatHistoryViewController.m */; };
 		DC1CF89B1361F28000E71363 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8901361F28000E71363 /* NSString+DDXML.m */; };
 		DC1CF89D1361F28000E71363 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8941361F28000E71363 /* DDXMLDocument.m */; };
 		DC1CF89E1361F28000E71363 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8961361F28000E71363 /* DDXMLElement.m */; };
@@ -230,6 +231,8 @@
 		B6237BE916EED3DF00D6E723 /* startle.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startle.PNG; sourceTree = "<group>"; };
 		B6237BEA16EED3DF00D6E723 /* sweat.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sweat.PNG; sourceTree = "<group>"; };
 		B6237BF216EED65500D6E723 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		B6420E3F1720FEC100BB35A8 /* SaturationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaturationView.h; sourceTree = "<group>"; };
+		B6420E401720FEC100BB35A8 /* SaturationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaturationView.m; sourceTree = "<group>"; };
 		B64403B1171BBB4E00D9D306 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		B64403B4171BD4AD00D9D306 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
@@ -305,10 +308,10 @@
 		B6B9F36916E2EC5A0065F72E /* navigationBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigationBar.png; sourceTree = "<group>"; };
 		B6B9F36B16E2ECA90065F72E /* MoodRatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoodRatingViewController.h; path = ../MoodRatingViewController.h; sourceTree = "<group>"; };
 		B6B9F36C16E2ECA90065F72E /* MoodRatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoodRatingViewController.m; path = ../MoodRatingViewController.m; sourceTree = "<group>"; };
-		B6B9F36E16E2ED770065F72E /* FaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceView.h; sourceTree = "<group>"; };
-		B6B9F36F16E2ED770065F72E /* FaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceView.m; sourceTree = "<group>"; };
 		B6C6A983170D2794001D9883 /* ListenerInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListenerInfoViewController.h; sourceTree = "<group>"; };
 		B6C6A984170D2794001D9883 /* ListenerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListenerInfoViewController.m; sourceTree = "<group>"; };
+		B6CD580C172721F200B80332 /* ChatHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatHistoryViewController.h; sourceTree = "<group>"; };
+		B6CD580D172721F200B80332 /* ChatHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatHistoryViewController.m; sourceTree = "<group>"; };
 		DC1CF88F1361F28000E71363 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
 		DC1CF8901361F28000E71363 /* NSString+DDXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DDXML.m"; sourceTree = "<group>"; };
 		DC1CF8911361F28000E71363 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
@@ -567,13 +570,13 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B6420E3F1720FEC100BB35A8 /* SaturationView.h */,
+				B6420E401720FEC100BB35A8 /* SaturationView.m */,
 				B64FEFD2171F655500036E1A /* MBProgressHUD */,
 				B6440412171D03D300D9D306 /* UIPlaceHolderTextView.h */,
 				B6440413171D03D300D9D306 /* UIPlaceHolderTextView.m */,
 				B64403B1171BBB4E00D9D306 /* RegistrationViewController.h */,
 				B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */,
-				B6B9F36E16E2ED770065F72E /* FaceView.h */,
-				B6B9F36F16E2ED770065F72E /* FaceView.m */,
 				B6B9F36B16E2ECA90065F72E /* MoodRatingViewController.h */,
 				B6B9F36C16E2ECA90065F72E /* MoodRatingViewController.m */,
 				B678F24616D02E8B00F9208D /* CoreDataTableViewController.m */,
@@ -582,6 +585,8 @@
 				B680521116CF84CD00B81836 /* NSString+Utils.m */,
 				1D3623240D0F684500981E51 /* iPhoneXMPPAppDelegate.h */,
 				1D3623250D0F684500981E51 /* iPhoneXMPPAppDelegate.m */,
+				B6CD580C172721F200B80332 /* ChatHistoryViewController.h */,
+				B6CD580D172721F200B80332 /* ChatHistoryViewController.m */,
 				B6B5B42816CE1AF2001A94BE /* ChatViewController.h */,
 				B6B5B42916CE1AF2001A94BE /* ChatViewController.m */,
 				B680521316CF861800B81836 /* MessageViewTableCell.h */,
@@ -1304,7 +1309,6 @@
 				B6823A9816D19DC8009D7086 /* AFXMLRequestOperation.m in Sources */,
 				B6823A9916D19DC8009D7086 /* UIImageView+AFNetworking.m in Sources */,
 				B6B9F36D16E2ECA90065F72E /* MoodRatingViewController.m in Sources */,
-				B6B9F37016E2ED770065F72E /* FaceView.m in Sources */,
 				B6237BD816EECF5E00D6E723 /* CustomTabBarController.m in Sources */,
 				B6C6A985170D2794001D9883 /* ListenerInfoViewController.m in Sources */,
 				B64403B3171BBB4E00D9D306 /* RegistrationViewController.m in Sources */,
@@ -1317,6 +1321,8 @@
 				B64403CA171CBD0500D9D306 /* WEPopoverViewController.m in Sources */,
 				B6440414171D03D300D9D306 /* UIPlaceHolderTextView.m in Sources */,
 				B64FEFDB171F661A00036E1A /* MBProgressHUD.m in Sources */,
+				B6420E411720FEC100BB35A8 /* SaturationView.m in Sources */,
+				B6CD580E172721F200B80332 /* ChatHistoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
