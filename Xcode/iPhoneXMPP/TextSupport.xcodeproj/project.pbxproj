@@ -98,6 +98,7 @@
 		B6B9F36D16E2ECA90065F72E /* MoodRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B9F36C16E2ECA90065F72E /* MoodRatingViewController.m */; };
 		B6C6A985170D2794001D9883 /* ListenerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C6A984170D2794001D9883 /* ListenerInfoViewController.m */; };
 		B6CD580E172721F200B80332 /* ChatHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD580D172721F200B80332 /* ChatHistoryViewController.m */; };
+		B6DB65221728D6A200BF463C /* ContentProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DB65211728D6A200BF463C /* ContentProvider.m */; };
 		DC1CF89B1361F28000E71363 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8901361F28000E71363 /* NSString+DDXML.m */; };
 		DC1CF89D1361F28000E71363 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8941361F28000E71363 /* DDXMLDocument.m */; };
 		DC1CF89E1361F28000E71363 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8961361F28000E71363 /* DDXMLElement.m */; };
@@ -312,6 +313,8 @@
 		B6C6A984170D2794001D9883 /* ListenerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListenerInfoViewController.m; sourceTree = "<group>"; };
 		B6CD580C172721F200B80332 /* ChatHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatHistoryViewController.h; sourceTree = "<group>"; };
 		B6CD580D172721F200B80332 /* ChatHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatHistoryViewController.m; sourceTree = "<group>"; };
+		B6DB65201728D6A200BF463C /* ContentProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentProvider.h; sourceTree = "<group>"; };
+		B6DB65211728D6A200BF463C /* ContentProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentProvider.m; sourceTree = "<group>"; };
 		DC1CF88F1361F28000E71363 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
 		DC1CF8901361F28000E71363 /* NSString+DDXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DDXML.m"; sourceTree = "<group>"; };
 		DC1CF8911361F28000E71363 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
@@ -587,6 +590,8 @@
 				1D3623250D0F684500981E51 /* iPhoneXMPPAppDelegate.m */,
 				B6CD580C172721F200B80332 /* ChatHistoryViewController.h */,
 				B6CD580D172721F200B80332 /* ChatHistoryViewController.m */,
+				B6DB65201728D6A200BF463C /* ContentProvider.h */,
+				B6DB65211728D6A200BF463C /* ContentProvider.m */,
 				B6B5B42816CE1AF2001A94BE /* ChatViewController.h */,
 				B6B5B42916CE1AF2001A94BE /* ChatViewController.m */,
 				B680521316CF861800B81836 /* MessageViewTableCell.h */,
@@ -1323,6 +1328,7 @@
 				B64FEFDB171F661A00036E1A /* MBProgressHUD.m in Sources */,
 				B6420E411720FEC100BB35A8 /* SaturationView.m in Sources */,
 				B6CD580E172721F200B80332 /* ChatHistoryViewController.m in Sources */,
+				B6DB65221728D6A200BF463C /* ContentProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

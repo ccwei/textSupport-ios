@@ -66,6 +66,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatHistory" forIndexPath:indexPath];
     
     XMPPMessageArchiving_Message_CoreDataObject *contact = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
     cell.textLabel.text = contact.bareJidStr;
     return cell;
 }

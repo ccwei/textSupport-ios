@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="XMPPMessageArchiving_Contact_CoreDataObject" representedClassName="XMPPMessageArchiving_Contact_CoreDataObject" syncable="YES">
         <attribute name="bareJid" optional="YES" transient="YES" syncable="YES"/>
         <attribute name="bareJidStr" attributeType="String" indexed="YES" syncable="YES"/>
@@ -20,9 +20,10 @@
         <attribute name="streamBareJidStr" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="thread" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
         <element name="XMPPMessageArchiving_Contact_CoreDataObject" positionX="135" positionY="135" width="378" height="135"/>
-        <element name="XMPPMessageArchiving_Message_CoreDataObject" positionX="-227" positionY="189" width="290" height="210"/>
+        <element name="XMPPMessageArchiving_Message_CoreDataObject" positionX="-227" positionY="189" width="290" height="225"/>
     </elements>
 </model>

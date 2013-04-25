@@ -14,8 +14,9 @@
 NSString *const kXMPPmyJID = @"kXMPPmyJID";
 NSString *const kEmail = @"kEmail";
 NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
-NSString *const kHostname = @"textsupport.no-ip.org";
+NSString *const kHostname = @"text-support.org";
 NSString *const kIsListener = @"kIsListener";
+NSString *const kUID = @"kUID";
 
 @implementation SettingsViewController
 
@@ -50,12 +51,10 @@ NSString *const kIsListener = @"kIsListener";
 
 - (IBAction)login
 {
-  NSString *realJID = [NSString stringWithFormat:@"%@@%@", [jidField.text stringByReplacingOccurrencesOfString:@"@" withString:@"_"], kHostname];
-  [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
   [Utilities setUserDefaultString:jidField.text forKey:kEmail];
   [Utilities setUserDefaultString:passwordField.text forKey:kXMPPmyPassword];
     
-    NSURL *aUrl = [NSURL URLWithString:@"http://textsupport.no-ip.org:1234/members"];
+    NSURL *aUrl = [NSURL URLWithString:@"http://text-support.org:1234/members"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl
                                                            cachePolicy:NSURLCacheStorageNotAllowed
                                                        timeoutInterval:60.0];
@@ -68,7 +67,9 @@ NSString *const kIsListener = @"kIsListener";
         NSLog(@"JSON = %@", JSON);
         NSLog(@"%@", [JSON valueForKeyPath:@"isListener"]);
         self.isListener = [[JSON valueForKeyPath:@"isListener"] boolValue];
-
+        NSString *realJID = [NSString stringWithFormat:@"%@@%@", [JSON valueForKeyPath:@"uid"], kHostname];
+        [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
+        NSLog(@"Log in using myJID:%@", realJID);
         [Utilities setUserDefaultBOOL:self.isListener forKey:kIsListener];
         [[self appDelegate] connect];
          } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {

@@ -233,7 +233,7 @@ NSString *const newMessageNotificationName = @"newMessageNotificationName";
 	// 
 	// If you don't specify a hostPort, then the default (5222) will be used.
 	
-	[xmppStream setHostName:@"textsupport.no-ip.org"];
+	[xmppStream setHostName:@"text-support.org"];
 	[xmppStream setHostPort:5222];	
 	
 
@@ -306,6 +306,7 @@ NSString *const newMessageNotificationName = @"newMessageNotificationName";
 	}
 
 	NSString *myJID = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
+    NSLog(@"Log in using myJID:%@", myJID);
 	NSString *myPassword = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyPassword];
 
 	//

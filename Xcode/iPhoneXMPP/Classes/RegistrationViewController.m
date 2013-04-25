@@ -65,30 +65,31 @@
 
 - (IBAction)signup:(UIButton *)sender {
     if([self validateEmail:self.emailTextField.text] && [self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
-        NSString *realJID = [NSString stringWithFormat:@"%@@%@", [self.emailTextField.text stringByReplacingOccurrencesOfString:@"@" withString:@"_"], kHostname];
-        [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
         [Utilities setUserDefaultString:self.emailTextField.text forKey:kEmail];
         [Utilities setUserDefaultString:self.passwordTextField.text forKey:kXMPPmyPassword];
         
-        NSURL *aUrl = [NSURL URLWithString:@"http://textsupport.no-ip.org:1234/members"];
+        NSURL *aUrl = [NSURL URLWithString:@"http://text-support.org:1234/members"];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl
                                                                cachePolicy:NSURLCacheStorageNotAllowed
                                                            timeoutInterval:60.0];
         [request setHTTPMethod:@"POST"];
         NSString *postString = [NSString stringWithFormat:@"member[email]=%@&member[password]=%@", self.emailTextField.text, self.passwordTextField.text];
         [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         
-        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"Success");
+        
+        AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            NSLog(@"JSON = %@", JSON);
+            NSString *uid = [NSString stringWithFormat:@"%@", [JSON valueForKeyPath:@"uid"]];
+            NSString *realJID = [NSString stringWithFormat:@"%@@%@", [JSON valueForKeyPath:@"uid"], kHostname];
+            [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
+            [Utilities setUserDefaultString:uid forKey:kUID];
             [[self appDelegate] connect];
             [self performSegueWithIdentifier:@"AfterSignUp" sender:self];
-        } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
             NSLog(@"Failure");
         }];
         
         [operation start];
-
     }
 }
 

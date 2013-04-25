@@ -41,7 +41,7 @@
     NSString *userid = [userJid substringToIndex:[userJid rangeOfString:@"@"].location];
     
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://textsupport.no-ip.org:1234/chatusers/chat_random_user?user=%@", userid]] cachePolicy: NSURLCacheStorageNotAllowed timeoutInterval:30.0];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://text-support.org:1234/chatusers/chat_random_user?user=%@", userid]] cachePolicy: NSURLCacheStorageNotAllowed timeoutInterval:30.0];
     [request setHTTPMethod:@"GET"];
 
     //AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];

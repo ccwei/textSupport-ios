@@ -14,6 +14,7 @@ extern NSString *const kXMPPmyPassword;
 extern NSString *const kHostname;
 extern NSString *const kEmail;
 extern NSString *const kIsListener;
+extern NSString *const kUID;
 
 @protocol SettingProtocol <NSObject>
 
