@@ -58,16 +58,37 @@
 }
 
 
+- (void) configureUnSeenMessagesForCell:(UITableViewCell *)cell jidStr:(NSString *)jidStr
+{
+    XMPPMessageArchivingCoreDataStorage *macds = [[self appDelegate] xmppMessageArchivingCoreDataStorage];
+    NSManagedObjectContext *moc = [[self appDelegate] managedObjectContext_messageArchiving];
+    NSEntityDescription *entity = [macds messageEntity:moc];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bareJidStr=%@ and seen=nil", jidStr];
+    NSSortDescriptor *sd1 = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES];
+    
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:sd1, nil];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setPredicate:predicate];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    
+    NSUInteger count = [moc countForFetchRequest:fetchRequest error:nil];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", count];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //NSDictionary *msg = (NSDictionary *)self.messages[indexPath.row];
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatHistory" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatHistory"];
     
     XMPPMessageArchiving_Message_CoreDataObject *contact = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.textLabel.text = contact.bareJidStr;
+    NSRange range = [contact.bareJidStr rangeOfString:@"@"];
+    cell.textLabel.text = [NSString stringWithFormat:@"User# %@", [contact.bareJidStr substringToIndex:range.location]];
+    [self configureUnSeenMessagesForCell:cell jidStr:contact.bareJidStr];
     return cell;
 }
 
@@ -76,11 +97,19 @@
     if ([segue.identifier isEqualToString:@"Show Messages"]) {
         XMPPMessageArchiving_Message_CoreDataObject *contact = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForCell:sender]];
         NSLog(@"set listener's jidstr = %@", contact.bareJidStr);
+        NSRange range = [contact.bareJidStr rangeOfString:@"@"];
+        NSString* nickName = [NSString stringWithFormat:@"User# %@", [contact.bareJidStr substringToIndex:range.location]];
         [segue.destinationViewController performSelector:@selector(setUserName:) withObject:contact.bareJidStr];
+        [segue.destinationViewController performSelector:@selector(setNickName:) withObject:nickName];
+        [segue.destinationViewController hidesBottomBarWhenPushed];
         //[segue.destinationViewController performSelector:@selector(setDelegate:) withObject:self];
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+}
 
 - (void)viewDidLoad
 {

@@ -12,4 +12,5 @@
 
 @interface ChatViewController : CoreDataTableViewController
 @property (strong, nonatomic) NSString* userName;
+@property (strong, nonatomic) NSString* nickName;
 @end

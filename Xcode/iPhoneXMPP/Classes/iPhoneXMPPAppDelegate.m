@@ -512,24 +512,24 @@ NSString *const newMessageNotificationName = @"newMessageNotificationName";
         [[NSNotificationCenter defaultCenter] postNotificationName:newMessageNotificationName object:nil userInfo:dictionary];
         
 
-		if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
-		{
-			/*UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:displayName
-															  message:body 
-															 delegate:nil 
-													cancelButtonTitle:@"Ok" 
-													otherButtonTitles:nil];
-			[alertView show];*/
-		}
-		else
-		{
+//		if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
+//		{
+//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:displayName
+//															  message:body 
+//															 delegate:nil 
+//													cancelButtonTitle:@"Ok" 
+//													otherButtonTitles:nil];
+//			[alertView show];
+//		}
+//		else
+//		{
 			// We are not active, so use a local notification instead
 			UILocalNotification *localNotification = [[UILocalNotification alloc] init];
 			localNotification.alertAction = @"Ok";
 			localNotification.alertBody = [NSString stringWithFormat:@"From: %@\n\n%@",displayName,body];
 
 			[[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
-		}
+//		}
 	}
 }
 

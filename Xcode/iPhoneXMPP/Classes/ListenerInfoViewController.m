@@ -10,6 +10,7 @@
 #import "iPhoneXMPPAppDelegate.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ListenerInfoViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
@@ -97,7 +98,8 @@
     if ([segue.identifier isEqualToString:@"Show Messages"]) {
         NSLog(@"set listener's jidstr = %@", [self.listener jidStr]);
         [segue.destinationViewController performSelector:@selector(setUserName:) withObject:[self.listener jidStr]];
-        //[segue.destinationViewController performSelector:@selector(setDelegate:) withObject:self];
+        [segue.destinationViewController performSelector:@selector(setNickName:) withObject:self.nameLabel.text];
+        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
     }
 }
 - (void)viewDidUnload {

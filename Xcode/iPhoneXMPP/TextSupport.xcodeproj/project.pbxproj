@@ -92,6 +92,10 @@
 		B6823A9716D19DC8009D7086 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B6823A8C16D19DC8009D7086 /* AFURLConnectionOperation.m */; };
 		B6823A9816D19DC8009D7086 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B6823A8E16D19DC8009D7086 /* AFXMLRequestOperation.m */; };
 		B6823A9916D19DC8009D7086 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B6823A9016D19DC8009D7086 /* UIImageView+AFNetworking.m */; };
+		B6A8E03217324F04004B2C27 /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = B6A8E03117324F04004B2C27 /* cloud.png */; };
+		B6A8E034173250DC004B2C27 /* rainy.png in Resources */ = {isa = PBXBuildFile; fileRef = B6A8E033173250DC004B2C27 /* rainy.png */; };
+		B6A8E036173250F6004B2C27 /* sunny.png in Resources */ = {isa = PBXBuildFile; fileRef = B6A8E035173250F6004B2C27 /* sunny.png */; };
+		B6A8E03817325283004B2C27 /* brown.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6A8E03717325283004B2C27 /* brown.jpg */; };
 		B6B5B42A16CE1AF2001A94BE /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B5B42916CE1AF2001A94BE /* ChatViewController.m */; };
 		B6B5B42D16CE1B18001A94BE /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6B5B42C16CE1B18001A94BE /* Storyboard.storyboard */; };
 		B6B9F36A16E2EC5A0065F72E /* navigationBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B9F36916E2EC5A0065F72E /* navigationBar.png */; };
@@ -303,6 +307,10 @@
 		B6823A8E16D19DC8009D7086 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		B6823A8F16D19DC8009D7086 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		B6823A9016D19DC8009D7086 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		B6A8E03117324F04004B2C27 /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
+		B6A8E033173250DC004B2C27 /* rainy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rainy.png; sourceTree = "<group>"; };
+		B6A8E035173250F6004B2C27 /* sunny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sunny.png; sourceTree = "<group>"; };
+		B6A8E03717325283004B2C27 /* brown.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brown.jpg; sourceTree = "<group>"; };
 		B6B5B42816CE1AF2001A94BE /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		B6B5B42916CE1AF2001A94BE /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		B6B5B42C16CE1B18001A94BE /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
@@ -681,6 +689,10 @@
 		B6237BE316EED3DF00D6E723 /* faces */ = {
 			isa = PBXGroup;
 			children = (
+				B6A8E03717325283004B2C27 /* brown.jpg */,
+				B6A8E035173250F6004B2C27 /* sunny.png */,
+				B6A8E033173250DC004B2C27 /* rainy.png */,
+				B6A8E03117324F04004B2C27 /* cloud.png */,
 				B6237BF216EED65500D6E723 /* heart.png */,
 				B6237BE416EED3DF00D6E723 /* anger.PNG */,
 				B6237BE516EED3DF00D6E723 /* cry.PNG */,
@@ -1208,6 +1220,10 @@
 				B64403DD171CBFA300D9D306 /* popoverArrowUp@2x.png in Resources */,
 				B64403DE171CBFA300D9D306 /* popoverBg.png in Resources */,
 				B64403DF171CBFA300D9D306 /* popoverBg@2x.png in Resources */,
+				B6A8E03217324F04004B2C27 /* cloud.png in Resources */,
+				B6A8E034173250DC004B2C27 /* rainy.png in Resources */,
+				B6A8E036173250F6004B2C27 /* sunny.png in Resources */,
+				B6A8E03817325283004B2C27 /* brown.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,10 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @property (strong, nonatomic) NSMutableArray* messages;
+@property (weak, nonatomic) IBOutlet UIView *messageBarView;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic) CGRect messageBarViewFrame;
+@property (nonatomic) CGRect tableViewFrame;
 @end
 
 @implementation ChatViewController
@@ -24,6 +27,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
         // Custom initialization
     }
     return self;
@@ -59,6 +63,8 @@
     [self setupFetchResultController];
     [self.tableView reloadData];
     [self scrollToBottom];
+    [self.view bringSubviewToFront:self.messageBarView];
+    self.title = self.nickName;
     //[self.messageTextField becomeFirstResponder];
 	// Do any additional setup after loading the view.
 }
@@ -148,12 +154,16 @@ static CGFloat padding = 20.0;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //NSDictionary *msg = (NSDictionary *)self.messages[indexPath.row];
-    MessageViewTableCell *cell = (MessageViewTableCell *)[tableView dequeueReusableCellWithIdentifier:@"MessageCellIdentifier" forIndexPath:indexPath];
+    MessageViewTableCell *cell = (MessageViewTableCell *)[tableView dequeueReusableCellWithIdentifier:@"MessageCellIdentifier"];
     
     XMPPMessageArchiving_Message_CoreDataObject *msg = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSString *sender = [msg.message.from bare];
     NSString *message = msg.body;
-    NSString *time = [msg.timestamp description];
+    NSLocale *locale = [NSLocale currentLocale];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setLocale:locale];
+    NSString *time = [formatter stringFromDate:msg.timestamp];
     CGSize  textSize = { 260.0, 10000.0 };
     CGSize size = [message sizeWithFont:[UIFont boldSystemFontOfSize:13]
                       constrainedToSize:textSize
@@ -162,7 +172,7 @@ static CGFloat padding = 20.0;
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.userInteractionEnabled = NO;
     UIImage *bgImage = nil;
-    if (!sender) { // left aligned
+    if (sender) { // left aligned
         bgImage = [[UIImage imageNamed:@"ballon1.png"] stretchableImageWithLeftCapWidth:24  topCapHeight:15];
         [cell.messageContentView setFrame:CGRectMake(padding, padding, size.width + padding, size.height)];
         [cell.bgImageView setFrame:CGRectMake(padding/2,
@@ -181,7 +191,7 @@ static CGFloat padding = 20.0;
                                               size.height+padding)];
     }
     cell.bgImageView.image = bgImage;
-    cell.senderAndTimeLabel.text = [NSString stringWithFormat:@"%@ %@", sender, time];
+    cell.senderAndTimeLabel.text = time;
     return cell;
 }
 
@@ -198,11 +208,61 @@ static CGFloat padding = 20.0;
     return height;
 }
 
+- (void)keyboardWillHide:(NSNotification *)note
+{
+    NSDictionary *userInfo = note.userInfo;
+    NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve curve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
+    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState | curve animations:^{
+        self.messageBarView.frame = self.messageBarViewFrame;
+        self.tableView.frame = self.tableViewFrame;
+    } completion:nil];
+    [self scrollToBottom];
+
+}
+
+//Keyboard Event
+- (void)keyboardWillShow:(NSNotification *)note
+{
+    NSDictionary *userInfo = note.userInfo;
+    NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve curve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
+    
+    CGRect keyboardFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect keyboardFrameForTextField = [self.messageBarView.superview convertRect:keyboardFrame fromView:nil];
+    CGRect newTextFieldFrame = self.messageBarView.frame;
+    newTextFieldFrame.origin.y = keyboardFrameForTextField.origin.y -  newTextFieldFrame.size.height;
+    self.messageBarViewFrame = self.messageBarView.frame;    
+    CGRect newTableViewFrame = self.tableView.frame;
+    self.tableViewFrame = self.tableView.frame;
+    //newTextFieldFrame.origin.y = 50;
+    newTableViewFrame.size.height = newTextFieldFrame.origin.y;
+    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionBeginFromCurrentState | curve animations:^{
+        self.messageBarView.frame = newTextFieldFrame;
+        self.tableView.frame = newTableViewFrame;
+    } completion:nil];
+    [self scrollToBottom];
+    
+
+
+    [self.view bringSubviewToFront:self.messageBarView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     for (XMPPMessageArchiving_Message_CoreDataObject *message in [self.fetchedResultsController fetchedObjects]) {
         message.seen = YES;
     }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (IBAction)tapTableView:(id)sender {
+    [self.messageTextField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -214,6 +274,12 @@ static CGFloat padding = 20.0;
 - (void)viewDidUnload {
     [self setTableView:nil];
     [self setMessageTextField:nil];
+    [self setMessageBarView:nil];
     [super viewDidUnload];
+}
+
+- (void) dealloc
+{
+    
 }
 @end

@@ -78,7 +78,8 @@ NSString *const kUID = @"kUID";
 
     [operation start];
 
-    [self performSegueWithIdentifier:@"LoginUnwind" sender:self];
+    [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
+    //[self performSegueWithIdentifier:@"LoginUnwind" sender:self];
     
   //[self dismissModalViewControllerAnimated:YES];
 }

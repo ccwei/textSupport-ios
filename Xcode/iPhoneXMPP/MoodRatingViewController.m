@@ -19,7 +19,11 @@
 @property (strong, nonatomic) UIPlaceHolderTextView *textView;
 @property (strong, nonatomic) UIButton *saveButton;
 @property (nonatomic) float saturation;
+@property (weak, nonatomic) IBOutlet UIImageView *cloudImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *sunImageView;
 @property (strong, nonatomic) SaturationView *heartView;
+@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *rainyImageView;
 @end
 
 @implementation MoodRatingViewController
@@ -107,14 +111,35 @@
         [self.navigationController.navigationBar setBackgroundImage:bgImage forBarMetrics:UIBarMetricsDefault];
     }
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
-     
-    [self.view addSubview:self.heartView];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                UITextAttributeTextColor: [UIColor greenColor],
+                          UITextAttributeTextShadowColor: [UIColor redColor],
+                         UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.0f)],
+                                     UITextAttributeFont: [UIFont fontWithName:@"Gill Sans" size:20.0f]
+     }];
+    
+    /*Before iOS5
+     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 400, 44)];
+     label.backgroundColor = [UIColor clearColor];
+     label.font = [UIFont boldSystemFontOfSize:20.0];
+     label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+     label.textAlignment = UITextAlignmentCenter;
+     label.textColor =[UIColor whiteColor];
+     label.text=self.title;
+     self.navigationItem.titleView = label;
+     [label release];
+     */
+    //[self.view addSubview:self.heartView];
     
 }
 
 
 - (IBAction)valueChanged:(UISlider *)sender {
     self.heartView.saturation = sender.value;
+    self.rainyImageView.alpha = sender.value * -2 + 1;
+    self.sunImageView.alpha = sender.value * 2 - 1;
+    self.saveBtn.alpha = 1;
 }
      
 - (void)didReceiveMemoryWarning
@@ -126,6 +151,10 @@
 - (void)viewDidUnload {
     [self setFaceviewCollection:nil];
     [self setHeartImageView:nil];
+    [self setRainyImageView:nil];
+    [self setCloudImageView:nil];
+    [self setSunImageView:nil];
+    [self setSaveBtn:nil];
     [super viewDidUnload];
 }
 
