@@ -11,7 +11,7 @@
 #import "NSString+Utils.h"
 #import "MessageViewTableCell.h"
 
-@interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate, MessageDelegate>
+@interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate, MessageDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @property (strong, nonatomic) NSMutableArray* messages;
@@ -60,6 +60,10 @@
     [self appDelegate].messageDelegate = self;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    tap.delegate = self;
+    tap.cancelsTouchesInView = YES;
+    [self.view addGestureRecognizer:tap];
     [self setupFetchResultController];
     [self.tableView reloadData];
     [self scrollToBottom];
@@ -104,6 +108,15 @@
     }
 }
 
+- (void)dismissKeyboard
+{
+    
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    return ! ([touch.view isKindOfClass:[UIControl class]]);
+}
 
 - (IBAction)sendMessage:(id)sender {
     NSString *msgStr = self.messageTextField.text;
