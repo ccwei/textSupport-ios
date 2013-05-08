@@ -303,7 +303,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="sendMessage:" destination="0uc-B8-TiM" eventType="touchUpInside" id="YIq-PA-26Y"/>
+                                            <action selector="sendMessage:" destination="0uc-B8-TiM" eventType="touchUpInside" id="RpR-zZ-XCT"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="b5c-zq-ORb">
@@ -345,7 +345,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRc-wA-boM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer cancelsTouchesInView="NO" id="9g7-jp-0ag">
+                <tapGestureRecognizer id="9g7-jp-0ag">
                     <connections>
                         <action selector="tapTableView:" destination="0uc-B8-TiM" id="7B6-T4-93S"/>
                     </connections>
@@ -595,6 +595,72 @@
         <image name="rainy.png" width="286" height="214"/>
         <image name="sunny.png" width="510" height="545"/>
     </resources>
+    <classes>
+        <class className="ChatHistoryViewController" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChatHistoryViewController.h"/>
+        </class>
+        <class className="ChatViewController" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChatViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="sendMessage:"/>
+                <relationship kind="action" name="tapTableView:"/>
+                <relationship kind="outlet" name="messageBarView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CoreDataTableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ListenerInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListenerInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="descTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="genderLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MessageViewTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MessageViewTableCell.h"/>
+        </class>
+        <class className="MoodRatingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MoodRatingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cloudImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="heartImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="rainyImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="saveBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sunImageView" candidateClass="UIImageView"/>
+                <relationship kind="outletCollection" name="faceviewCollection" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="RegistrationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="confirmPasswordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="RootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="hideKeyboard:"/>
+                <relationship kind="outlet" name="jidField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
