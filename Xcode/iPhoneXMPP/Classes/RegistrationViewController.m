@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "iPhoneXMPPAppDelegate.h"
 #import "Utilities.h"
+#import "MBProgressHUD.h"
 
 @interface RegistrationViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -64,6 +65,22 @@
 }
 
 - (IBAction)signup:(UIButton *)sender {
+    [self.view endEditing:YES];
+    
+    if (![self validateEmail:self.emailTextField.text]) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"Please Enter Valid Email";
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            sleep(1);
+            // Do something...
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hide:YES];
+                self.emailTextField.text = @"";
+            });
+        });
+    }
+    
     if([self validateEmail:self.emailTextField.text] && [self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
         [Utilities setUserDefaultString:self.emailTextField.text forKey:kEmail];
         [Utilities setUserDefaultString:self.passwordTextField.text forKey:kXMPPmyPassword];
@@ -76,7 +93,7 @@
         NSString *postString = [NSString stringWithFormat:@"member[email]=%@&member[password]=%@", self.emailTextField.text, self.passwordTextField.text];
         [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
         
-        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             NSLog(@"JSON = %@", JSON);
             NSString *uid = [NSString stringWithFormat:@"%@", [JSON valueForKeyPath:@"uid"]];
@@ -84,10 +101,12 @@
             [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
             [Utilities setUserDefaultString:uid forKey:kUID];
             [[self appDelegate] connect];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
             //[self performSegueWithIdentifier:@"AfterSignUp" sender:self];
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
             NSLog(@"Failure");
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }];
         
         [operation start];
