@@ -7,10 +7,11 @@
 //
 
 #import "ChatHistoryViewController.h"
+#import "SettingsViewController.h"
 #import "iPhoneXMPPAppDelegate.h"
 
 @interface ChatHistoryViewController ()
-
+@property (strong, nonatomic) NSString *jid;
 @end
 
 @implementation ChatHistoryViewController
@@ -33,7 +34,7 @@
     XMPPMessageArchivingCoreDataStorage *macds = [[self appDelegate] xmppMessageArchivingCoreDataStorage];
     NSManagedObjectContext *moc = [[self appDelegate] managedObjectContext_messageArchiving];
     NSEntityDescription *entity = [macds contactEntity:moc];
-    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bareJidStr=%@", self.userName];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"streamBareJidStr=%@", self.jid];
     //NSLog(@"Username = %@", self.userName);
     NSSortDescriptor *sd1 = [[NSSortDescriptor alloc] initWithKey:@"bareJidStr" ascending:YES];
     
@@ -41,7 +42,7 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entity];
-    //[fetchRequest setPredicate:predicate];
+    [fetchRequest setPredicate:predicate];
     [fetchRequest setSortDescriptors:sortDescriptors];
     [fetchRequest setFetchBatchSize:10];
     
@@ -72,7 +73,6 @@
     [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:predicate];
     [fetchRequest setSortDescriptors:sortDescriptors];
-    
     
     NSUInteger count = [moc countForFetchRequest:fetchRequest error:nil];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", count];
@@ -114,6 +114,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.jid = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
     [self setupFetchResultController];
 	// Do any additional setup after loading the view.
 }

@@ -51,7 +51,6 @@
 		B6237BF016EED3DF00D6E723 /* startle.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B6237BE916EED3DF00D6E723 /* startle.PNG */; };
 		B6237BF116EED3DF00D6E723 /* sweat.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B6237BEA16EED3DF00D6E723 /* sweat.PNG */; };
 		B6237BF316EED65500D6E723 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = B6237BF216EED65500D6E723 /* heart.png */; };
-		B6420E411720FEC100BB35A8 /* SaturationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6420E401720FEC100BB35A8 /* SaturationView.m */; };
 		B64403B3171BBB4E00D9D306 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */; };
 		B64403B6171BD4AD00D9D306 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403B5171BD4AD00D9D306 /* Utilities.m */; };
 		B64403C5171CBD0500D9D306 /* WEPopoverAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403B9171CBD0500D9D306 /* WEPopoverAppDelegate.m */; };
@@ -236,8 +235,6 @@
 		B6237BE916EED3DF00D6E723 /* startle.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startle.PNG; sourceTree = "<group>"; };
 		B6237BEA16EED3DF00D6E723 /* sweat.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sweat.PNG; sourceTree = "<group>"; };
 		B6237BF216EED65500D6E723 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
-		B6420E3F1720FEC100BB35A8 /* SaturationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaturationView.h; sourceTree = "<group>"; };
-		B6420E401720FEC100BB35A8 /* SaturationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaturationView.m; sourceTree = "<group>"; };
 		B64403B1171BBB4E00D9D306 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		B64403B4171BD4AD00D9D306 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
@@ -581,8 +578,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B6420E3F1720FEC100BB35A8 /* SaturationView.h */,
-				B6420E401720FEC100BB35A8 /* SaturationView.m */,
 				B64FEFD2171F655500036E1A /* MBProgressHUD */,
 				B6440412171D03D300D9D306 /* UIPlaceHolderTextView.h */,
 				B6440413171D03D300D9D306 /* UIPlaceHolderTextView.m */,
@@ -590,8 +585,8 @@
 				B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */,
 				B6B9F36B16E2ECA90065F72E /* MoodRatingViewController.h */,
 				B6B9F36C16E2ECA90065F72E /* MoodRatingViewController.m */,
-				B678F24616D02E8B00F9208D /* CoreDataTableViewController.m */,
 				B678F24716D02E8B00F9208D /* CoreDataTableViewController.h */,
+				B678F24616D02E8B00F9208D /* CoreDataTableViewController.m */,
 				B680521016CF84CD00B81836 /* NSString+Utils.h */,
 				B680521116CF84CD00B81836 /* NSString+Utils.m */,
 				1D3623240D0F684500981E51 /* iPhoneXMPPAppDelegate.h */,
@@ -1342,7 +1337,6 @@
 				B64403CA171CBD0500D9D306 /* WEPopoverViewController.m in Sources */,
 				B6440414171D03D300D9D306 /* UIPlaceHolderTextView.m in Sources */,
 				B64FEFDB171F661A00036E1A /* MBProgressHUD.m in Sources */,
-				B6420E411720FEC100BB35A8 /* SaturationView.m in Sources */,
 				B6CD580E172721F200B80332 /* ChatHistoryViewController.m in Sources */,
 				B6DB65221728D6A200BF463C /* ContentProvider.m in Sources */,
 			);

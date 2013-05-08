@@ -81,40 +81,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyP-rF-Lx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="293" y="-573"/>
+            <point key="canvasLocation" x="185" y="-541"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="5tM-vC-QOZ">
             <objects>
                 <viewController id="bCg-Ic-xLX" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ehR-wb-XeM">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="user@example.com" minimumFontSize="17" clearButtonMode="whileEditing" id="FbA-rX-PoX" userLabel="JID Text Field - user@example.com">
-                                <rect key="frame" x="103" y="31" width="197" height="31"/>
+                                <rect key="frame" x="103" y="35" width="197" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="2zI-Yb-Gur" userLabel="Password Text Field">
-                                <rect key="frame" x="103" y="71" width="197" height="31"/>
+                                <rect key="frame" x="103" y="81" width="197" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Email" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" id="fq6-2C-cUP">
-                                <rect key="frame" x="33" y="36" width="43" height="21"/>
+                                <rect key="frame" x="33" y="41" width="43" height="21"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Password" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" id="A3U-hY-DSR">
-                                <rect key="frame" x="17" y="76" width="75" height="21"/>
+                                <rect key="frame" x="17" y="86" width="75" height="21"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JfC-RN-Ewq">
-                                <rect key="frame" x="235" y="135" width="65" height="44"/>
+                                <rect key="frame" x="235" y="155" width="65" height="44"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -138,14 +138,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gam-4a-E9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="830" y="-290"/>
+            <point key="canvasLocation" x="886" y="-274"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="1Dc-2X-7Pw">
             <objects>
                 <viewController id="ZCE-En-QMy" customClass="RegistrationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b76-Z6-Upn">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" id="t56-sN-Nyt">
@@ -215,7 +215,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RV2-zA-y1S">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="77" width="320" height="290"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -253,6 +253,21 @@
                                     <outlet property="delegate" destination="Tue-BB-MF1" id="VBs-b6-ZS1"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="c02-os-Oge">
+                                <rect key="frame" x="56" y="14" width="209" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Chat with another listener">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Ope-hZ-I4Y" kind="push" identifier="Show ListenerInfo" id="s5z-dh-QxL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -263,14 +278,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A0V-Wd-eHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="234" y="1049"/>
+            <point key="canvasLocation" x="-78" y="909"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="h4X-Be-nch">
             <objects>
                 <viewController id="0uc-B8-TiM" customClass="ChatViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WqV-6u-M7V">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="Yjy-br-aZ5">
@@ -300,7 +315,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QE1-b6-W3l">
-                                <rect key="frame" x="7" y="14" width="306" height="338"/>
+                                <rect key="frame" x="7" y="22" width="306" height="338"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="MessageCellIdentifier" id="WAV-JN-Hly" customClass="MessageViewTableCell">
@@ -336,7 +351,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="586" y="1049"/>
+            <point key="canvasLocation" x="824" y="1005"/>
         </scene>
         <!--Mood Rating View Controller - TextSupport-->
         <scene sceneID="kTQ-78-y1R">
@@ -492,18 +507,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJM-VB-9At" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-399" y="363"/>
+            <point key="canvasLocation" x="-523" y="399"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="QHR-Fi-t50">
             <objects>
                 <viewController id="7eC-h3-BOV" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ysp-6d-oUQ">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="In order to ensure high quality experience, please log in first." id="kf0-To-fyO">
-                                <rect key="frame" x="15" y="20" width="285" height="88"/>
+                                <rect key="frame" x="15" y="20" width="285" height="137"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -553,7 +568,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBG-4Z-7Dj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="293" y="19"/>
+            <point key="canvasLocation" x="329" y="221"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="Uh1-Tz-BhE">
@@ -580,78 +595,14 @@
         <image name="rainy.png" width="286" height="214"/>
         <image name="sunny.png" width="510" height="545"/>
     </resources>
-    <classes>
-        <class className="ChatHistoryViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChatHistoryViewController.h"/>
-        </class>
-        <class className="ChatViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChatViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="messageBarView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="CoreDataTableViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="ListenerInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListenerInfoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="descTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="genderLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MessageViewTableCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MessageViewTableCell.h"/>
-        </class>
-        <class className="MoodRatingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MoodRatingViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cloudImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="heartImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="rainyImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="saveBtn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sunImageView" candidateClass="UIImageView"/>
-                <relationship kind="outletCollection" name="faceviewCollection" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="RegistrationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="confirmPasswordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="RootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="action" name="hideKeyboard:"/>
-                <relationship kind="outlet" name="jidField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="EfV-Kt-xwq"/>
-        <segue reference="o7P-KK-AcL"/>
-        <segue reference="jH6-bg-9D2"/>
+        <segue reference="s5z-dh-QxL"/>
+        <segue reference="lzd-TJ-avw"/>
+        <segue reference="ApA-kq-5y2"/>
     </inferredMetricsTieBreakers>
 </document>

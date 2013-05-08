@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descTextView;
-@property (strong, nonatomic) XMPPUserCoreDataStorageObject *listener;
+@property (strong, nonatomic) NSString *listenerJID;
 @property (strong, nonatomic) MBProgressHUD *HUD;
 @end
 
@@ -59,8 +59,7 @@
         self.descTextView.text = [JSON valueForKeyPath:@"desc"];
         
         NSLog(@"set listener");
-        self.listener = [[[self appDelegate] xmppRosterStorage] userForJID:[XMPPJID jidWithString:[JSON valueForKeyPath:@"listenerJid"]] xmppStream:[[self appDelegate] xmppStream] managedObjectContext:[[self appDelegate] managedObjectContext_roster]];
-        
+        self.listenerJID = [JSON valueForKeyPath:@"listenerJid"];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Fail to get listener, maybe server error!");
@@ -96,8 +95,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Show Messages"]) {
-        NSLog(@"set listener's jidstr = %@", [self.listener jidStr]);
-        [segue.destinationViewController performSelector:@selector(setUserName:) withObject:[self.listener jidStr]];
+        NSLog(@"set listener's jidstr = %@", self.listenerJID);
+        [segue.destinationViewController performSelector:@selector(setUserName:) withObject:self.listenerJID];
         [segue.destinationViewController performSelector:@selector(setNickName:) withObject:self.nameLabel.text];
         [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
     }

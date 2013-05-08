@@ -7,7 +7,6 @@
 //
 
 #import "MoodRatingViewController.h"
-#import "SaturationView.h"
 #import "WEPopoverController.h"
 #import "UIPlaceHolderTextView.h"
 #import "SettingsViewController.h"
@@ -21,24 +20,11 @@
 @property (nonatomic) float saturation;
 @property (weak, nonatomic) IBOutlet UIImageView *cloudImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *sunImageView;
-@property (strong, nonatomic) SaturationView *heartView;
 @property (weak, nonatomic) IBOutlet UIButton *saveBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *rainyImageView;
 @end
 
 @implementation MoodRatingViewController
-
-- (SaturationView *)heartView
-{
-    if (!_heartView) {
-        _heartView = [[SaturationView alloc] initWithFrame:CGRectZero];
-        _heartView.image = [UIImage imageNamed:@"heart.png"];
-        _heartView.frame = CGRectMake(0, 0, _heartView.image.size.width, _heartView.image.size.height);
-        _heartView.center = CGPointMake(160, 180); // put it mid-screen
-        _heartView.saturation = 0.5; // desaturate by 20%,
-    }
-    return _heartView;
-}
 
 - (UIButton *)saveButton
 {
@@ -136,7 +122,6 @@
 
 
 - (IBAction)valueChanged:(UISlider *)sender {
-    self.heartView.saturation = sender.value;
     self.rainyImageView.alpha = sender.value * -2 + 1;
     self.sunImageView.alpha = sender.value * 2 - 1;
     self.saveBtn.alpha = 1;
@@ -265,11 +250,7 @@
         [self performSegueWithIdentifier:@"Show Login" sender:self];
     } else {
         NSLog(@"isListener = %d", [[NSUserDefaults standardUserDefaults] boolForKey:kIsListener]);
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsListener]) {
-            [self performSegueWithIdentifier:@"Show ChatHistory" sender:self];
-        } else {
-            [self performSegueWithIdentifier:@"Show Listener" sender:self];
-        }
+        [self performSegueWithIdentifier:@"Show ChatHistory" sender:self];
     }
 }
 
