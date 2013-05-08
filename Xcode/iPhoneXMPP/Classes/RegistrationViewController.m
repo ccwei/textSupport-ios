@@ -84,7 +84,8 @@
             [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
             [Utilities setUserDefaultString:uid forKey:kUID];
             [[self appDelegate] connect];
-            [self performSegueWithIdentifier:@"AfterSignUp" sender:self];
+            [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
+            //[self performSegueWithIdentifier:@"AfterSignUp" sender:self];
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
             NSLog(@"Failure");
         }];
