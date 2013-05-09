@@ -51,6 +51,9 @@
 		B6237BF016EED3DF00D6E723 /* startle.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B6237BE916EED3DF00D6E723 /* startle.PNG */; };
 		B6237BF116EED3DF00D6E723 /* sweat.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B6237BEA16EED3DF00D6E723 /* sweat.PNG */; };
 		B6237BF316EED65500D6E723 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = B6237BF216EED65500D6E723 /* heart.png */; };
+		B625A0ED173B5D5100625E03 /* TSAFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B625A0EC173B5D5100625E03 /* TSAFJSONRequestOperation.m */; };
+		B625A0F0173B64E600625E03 /* TSHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B625A0EF173B64E600625E03 /* TSHttpClient.m */; };
+		B625A0F4173B8FEE00625E03 /* TOUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B625A0F3173B8FED00625E03 /* TOUViewController.m */; };
 		B64403B3171BBB4E00D9D306 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */; };
 		B64403B6171BD4AD00D9D306 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403B5171BD4AD00D9D306 /* Utilities.m */; };
 		B64403C5171CBD0500D9D306 /* WEPopoverAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B64403B9171CBD0500D9D306 /* WEPopoverAppDelegate.m */; };
@@ -235,6 +238,12 @@
 		B6237BE916EED3DF00D6E723 /* startle.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startle.PNG; sourceTree = "<group>"; };
 		B6237BEA16EED3DF00D6E723 /* sweat.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sweat.PNG; sourceTree = "<group>"; };
 		B6237BF216EED65500D6E723 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		B625A0EB173B5D5100625E03 /* TSAFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAFJSONRequestOperation.h; sourceTree = "<group>"; };
+		B625A0EC173B5D5100625E03 /* TSAFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAFJSONRequestOperation.m; sourceTree = "<group>"; };
+		B625A0EE173B64E600625E03 /* TSHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSHttpClient.h; sourceTree = "<group>"; };
+		B625A0EF173B64E600625E03 /* TSHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSHttpClient.m; sourceTree = "<group>"; };
+		B625A0F2173B8FED00625E03 /* TOUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOUViewController.h; sourceTree = "<group>"; };
+		B625A0F3173B8FED00625E03 /* TOUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOUViewController.m; sourceTree = "<group>"; };
 		B64403B1171BBB4E00D9D306 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		B64403B4171BD4AD00D9D306 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
@@ -581,8 +590,7 @@
 				B64FEFD2171F655500036E1A /* MBProgressHUD */,
 				B6440412171D03D300D9D306 /* UIPlaceHolderTextView.h */,
 				B6440413171D03D300D9D306 /* UIPlaceHolderTextView.m */,
-				B64403B1171BBB4E00D9D306 /* RegistrationViewController.h */,
-				B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */,
+				B625A0F1173B8DC700625E03 /* Registration */,
 				B6B9F36B16E2ECA90065F72E /* MoodRatingViewController.h */,
 				B6B9F36C16E2ECA90065F72E /* MoodRatingViewController.m */,
 				B678F24716D02E8B00F9208D /* CoreDataTableViewController.h */,
@@ -603,8 +611,10 @@
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				B6C6A983170D2794001D9883 /* ListenerInfoViewController.h */,
 				B6C6A984170D2794001D9883 /* ListenerInfoViewController.m */,
-				0704FFC5134794020092A737 /* SettingsViewController.h */,
-				0704FFC6134794020092A737 /* SettingsViewController.m */,
+				B625A0EB173B5D5100625E03 /* TSAFJSONRequestOperation.h */,
+				B625A0EC173B5D5100625E03 /* TSAFJSONRequestOperation.m */,
+				B625A0EE173B64E600625E03 /* TSHttpClient.h */,
+				B625A0EF173B64E600625E03 /* TSHttpClient.m */,
 				B64403B4171BD4AD00D9D306 /* Utilities.h */,
 				B64403B5171BD4AD00D9D306 /* Utilities.m */,
 				B6B5B42C16CE1B18001A94BE /* Storyboard.storyboard */,
@@ -698,6 +708,19 @@
 				B6237BEA16EED3DF00D6E723 /* sweat.PNG */,
 			);
 			path = faces;
+			sourceTree = "<group>";
+		};
+		B625A0F1173B8DC700625E03 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				B64403B1171BBB4E00D9D306 /* RegistrationViewController.h */,
+				B64403B2171BBB4E00D9D306 /* RegistrationViewController.m */,
+				0704FFC5134794020092A737 /* SettingsViewController.h */,
+				0704FFC6134794020092A737 /* SettingsViewController.m */,
+				B625A0F2173B8FED00625E03 /* TOUViewController.h */,
+				B625A0F3173B8FED00625E03 /* TOUViewController.m */,
+			);
+			name = Registration;
 			sourceTree = "<group>";
 		};
 		B64403B7171CBCEF00D9D306 /* WEPopover */ = {
@@ -1339,6 +1362,9 @@
 				B64FEFDB171F661A00036E1A /* MBProgressHUD.m in Sources */,
 				B6CD580E172721F200B80332 /* ChatHistoryViewController.m in Sources */,
 				B6DB65221728D6A200BF463C /* ContentProvider.m in Sources */,
+				B625A0ED173B5D5100625E03 /* TSAFJSONRequestOperation.m in Sources */,
+				B625A0F0173B64E600625E03 /* TSHttpClient.m in Sources */,
+				B625A0F4173B8FEE00625E03 /* TOUViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

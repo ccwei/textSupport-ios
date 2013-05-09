@@ -8,8 +8,10 @@
 
 #import "SettingsViewController.h"
 #import "iPhoneXMPPAppDelegate.h"
-#import "AFNetworking.h"
+#import "TSAFJSONRequestOperation.h"
 #import "Utilities.h"
+#import "MBProgressHUD.h"
+#import "TSHttpClient.h"
 
 NSString *const kXMPPmyJID = @"kXMPPmyJID";
 NSString *const kEmail = @"kEmail";
@@ -49,36 +51,61 @@ NSString *const kUID = @"kUID";
 #pragma mark Actions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+- (void)displayErrorMessage:(NSString *)message
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = message;
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        sleep(1);
+        // Do something...
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hide:YES];
+            self.infoLabel.text = message;
+            self.passwordField.text = @"";
+        });
+    });
+    
+}
+
 - (IBAction)login
 {
-  [Utilities setUserDefaultString:jidField.text forKey:kEmail];
-  [Utilities setUserDefaultString:passwordField.text forKey:kXMPPmyPassword];
+    [self.view endEditing:YES];
+    [Utilities setUserDefaultString:jidField.text forKey:kEmail];
+    [Utilities setUserDefaultString:passwordField.text forKey:kXMPPmyPassword];
     
-    NSURL *aUrl = [NSURL URLWithString:@"http://text-support.org:1234/members"];
+    NSURL *aUrl = [NSURL URLWithString:@"http://text-support.org:1234/members/sign_in"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl
                                                            cachePolicy:NSURLCacheStorageNotAllowed
                                                        timeoutInterval:60.0];
     [request setHTTPMethod:@"POST"];
     NSString *postString = [NSString stringWithFormat:@"member[email]=%@&member[password]=%@", jidField.text, passwordField.text];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-      
-        NSLog(@"JSON = %@", JSON);
-        NSLog(@"%@", [JSON valueForKeyPath:@"isListener"]);
-        self.isListener = [[JSON valueForKeyPath:@"isListener"] boolValue];
-        NSString *realJID = [NSString stringWithFormat:@"%@@%@", [JSON valueForKeyPath:@"uid"], kHostname];
+    TSHttpClient *httpClient = [TSHttpClient sharedClient];
+    AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation , id response) {
+        //NSLog(@"JSON = %@", JSON);
+        NSError *error;
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
+        NSLog(@"d = %@", response);
+        NSLog(@"d = %@", jsonDict);
+        NSLog(@"error = %@", error);
+        
+        //NSLog(@"%@", [JSON valueForKeyPath:@"isListener"]);
+        //self.isListener = [[JSON valueForKeyPath:@"isListener"] boolValue];
+        NSString *realJID = [NSString stringWithFormat:@"%@@%@", @"42", kHostname];
         [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
         NSLog(@"Log in using myJID:%@", realJID);
         [Utilities setUserDefaultBOOL:self.isListener forKey:kIsListener];
         [[self appDelegate] connect];
-         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-             NSLog(@"Failure");
+        
+        [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failure");
+        [self displayErrorMessage:@"Email or password is wrong."];
+        [Utilities setUserDefaultString:nil forKey:kXMPPmyJID];
+        [Utilities setUserDefaultString:nil forKey:kXMPPmyPassword];
     }];
-
     [operation start];
-
-    [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
 }
 
 - (IBAction)hideKeyboard:(id)sender {
@@ -93,4 +120,8 @@ NSString *const kUID = @"kUID";
 @synthesize jidField;
 @synthesize passwordField;
 
+- (void)viewDidUnload {
+    [self setInfoLabel:nil];
+    [super viewDidUnload];
+}
 @end

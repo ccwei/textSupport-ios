@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextField;
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 
 @end
 
@@ -64,21 +65,34 @@
     return [emailTest evaluateWithObject:email];
 }
 
+- (void)displayErrorMessage:(NSString *)message
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = message;
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        sleep(1);
+        // Do something...
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hide:YES];
+            self.infoLabel.text = message;
+            self.emailTextField.text = @"";
+            self.passwordTextField.text = @"";
+            self.confirmPasswordTextField.text = @"";
+        });
+    });
+    
+}
+
 - (IBAction)signup:(UIButton *)sender {
     [self.view endEditing:YES];
     
     if (![self validateEmail:self.emailTextField.text]) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"Please Enter Valid Email";
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            sleep(1);
-            // Do something...
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [hud hide:YES];
-                self.emailTextField.text = @"";
-            });
-        });
+        [self displayErrorMessage:@"Please enter valid email."];
+    }
+    
+    if (![self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
+        [self displayErrorMessage:@"Two passwords don't match."];
     }
     
     if([self validateEmail:self.emailTextField.text] && [self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
@@ -105,6 +119,9 @@
             [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
             //[self performSegueWithIdentifier:@"AfterSignUp" sender:self];
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+            [self displayErrorMessage:@"Server Error, please try again later."];
+            [Utilities setUserDefaultString:nil forKey:kXMPPmyJID];
+            [Utilities setUserDefaultString:nil forKey:kUID];
             NSLog(@"Failure");
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         }];
@@ -117,6 +134,7 @@
     [self setEmailTextField:nil];
     [self setPasswordTextField:nil];
     [self setConfirmPasswordTextField:nil];
+    [self setInfoLabel:nil];
     [super viewDidUnload];
 }
 @end

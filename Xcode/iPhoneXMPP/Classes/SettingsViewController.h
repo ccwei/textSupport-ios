@@ -30,6 +30,7 @@ extern NSString *const kUID;
 @property (nonatomic,strong) IBOutlet UITextField *jidField;
 @property (nonatomic,strong) IBOutlet UITextField *passwordField;
 @property BOOL isListener;
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 
 - (IBAction)done:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;
