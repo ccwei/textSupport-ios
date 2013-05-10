@@ -8,9 +8,9 @@
 
 #import "ListenerInfoViewController.h"
 #import "iPhoneXMPPAppDelegate.h"
-#import "AFNetworking.h"
 #import "MBProgressHUD.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AFNetworking.h"
 
 @interface ListenerInfoViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *genderLabel;
@@ -64,18 +64,8 @@
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Fail to get listener, maybe server error!");
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-    }];
-
-    /*
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSLog(@"Success");
-    } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failure");
-    }];*/
-    
+    }];    
     [operation start];
-     
 }
 
 - (void)viewDidLoad

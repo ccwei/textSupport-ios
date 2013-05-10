@@ -8,10 +8,8 @@
 
 #import "SettingsViewController.h"
 #import "iPhoneXMPPAppDelegate.h"
-#import "TSAFJSONRequestOperation.h"
 #import "Utilities.h"
 #import "MBProgressHUD.h"
-#import "TSHttpClient.h"
 
 NSString *const kXMPPmyJID = @"kXMPPmyJID";
 NSString *const kEmail = @"kEmail";
@@ -53,6 +51,9 @@ NSString *const kUID = @"kUID";
 
 - (void)displayErrorMessage:(NSString *)message
 {
+    self.infoLabel.text = message;
+    self.passwordField.text = @"";
+    /*
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = message;
@@ -64,7 +65,7 @@ NSString *const kUID = @"kUID";
             self.infoLabel.text = message;
             self.passwordField.text = @"";
         });
-    });
+    });*/
     
 }
 
@@ -75,37 +76,44 @@ NSString *const kUID = @"kUID";
     [Utilities setUserDefaultString:passwordField.text forKey:kXMPPmyPassword];
     
     NSURL *aUrl = [NSURL URLWithString:@"http://text-support.org:1234/members/sign_in"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl
-                                                           cachePolicy:NSURLCacheStorageNotAllowed
-                                                       timeoutInterval:60.0];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl];
     [request setHTTPMethod:@"POST"];
     NSString *postString = [NSString stringWithFormat:@"member[email]=%@&member[password]=%@", jidField.text, passwordField.text];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    TSHttpClient *httpClient = [TSHttpClient sharedClient];
-    AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation , id response) {
-        //NSLog(@"JSON = %@", JSON);
-        NSError *error;
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
-        NSLog(@"d = %@", response);
-        NSLog(@"d = %@", jsonDict);
-        NSLog(@"error = %@", error);
-        
-        //NSLog(@"%@", [JSON valueForKeyPath:@"isListener"]);
-        //self.isListener = [[JSON valueForKeyPath:@"isListener"] boolValue];
-        NSString *realJID = [NSString stringWithFormat:@"%@@%@", @"42", kHostname];
-        [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
-        NSLog(@"Log in using myJID:%@", realJID);
-        [Utilities setUserDefaultBOOL:self.isListener forKey:kIsListener];
-        [[self appDelegate] connect];
-        
-        [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failure");
-        [self displayErrorMessage:@"Email or password is wrong."];
-        [Utilities setUserDefaultString:nil forKey:kXMPPmyJID];
-        [Utilities setUserDefaultString:nil forKey:kXMPPmyPassword];
-    }];
-    [operation start];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+     {
+         if (data) {
+             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:NULL];
+             NSString *err = [dic valueForKey:@"error"];
+             if (err) {
+                 NSLog(@"Log in fail!");
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     [self displayErrorMessage:@"Email or password is wrong."];
+                 });
+                 [Utilities setUserDefaultString:nil forKey:kXMPPmyJID];
+                 [Utilities setUserDefaultString:nil forKey:kXMPPmyPassword];
+             } else {
+                 NSLog(@"Log in success");
+                 self.isListener = [[dic valueForKeyPath:@"is_listener"] boolValue];
+                 NSLog(@"%@", dic);
+                 NSString *realJID = [NSString stringWithFormat:@"%@@%@",[dic valueForKeyPath:@"id"], kHostname];
+                 [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
+                 NSLog(@"Log in using myJID:%@", realJID);
+                 [Utilities setUserDefaultBOOL:self.isListener forKey:kIsListener];
+                 [[self appDelegate] connect];
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                     [self displayErrorMessage:@""];
+                     [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
+                });
+            }
+         }
+
+     }];
 }
 
 - (IBAction)hideKeyboard:(id)sender {

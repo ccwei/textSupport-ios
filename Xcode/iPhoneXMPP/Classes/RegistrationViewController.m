@@ -7,7 +7,6 @@
 //
 
 #import "RegistrationViewController.h"
-#import "AFNetworking.h"
 #import "iPhoneXMPPAppDelegate.h"
 #import "Utilities.h"
 #import "MBProgressHUD.h"
@@ -84,6 +83,15 @@
     
 }
 
+- (void)registerFailWithReason:(NSString *)reason{
+    dispatch_async(dispatch_get_main_queue(), ^{
+     [MBProgressHUD hideHUDForView:self.view animated:YES];
+     [self displayErrorMessage:reason];
+     });
+     [Utilities setUserDefaultString:nil forKey:kXMPPmyJID];
+     [Utilities setUserDefaultString:nil forKey:kXMPPmyPassword];
+}
+
 - (IBAction)signup:(UIButton *)sender {
     [self.view endEditing:YES];
     
@@ -106,27 +114,41 @@
         [request setHTTPMethod:@"POST"];
         NSString *postString = [NSString stringWithFormat:@"member[email]=%@&member[password]=%@", self.emailTextField.text, self.passwordTextField.text];
         [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-            NSLog(@"JSON = %@", JSON);
-            NSString *uid = [NSString stringWithFormat:@"%@", [JSON valueForKeyPath:@"uid"]];
-            NSString *realJID = [NSString stringWithFormat:@"%@@%@", [JSON valueForKeyPath:@"uid"], kHostname];
-            [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
-            [Utilities setUserDefaultString:uid forKey:kUID];
-            [[self appDelegate] connect];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 3] animated:YES];
-            //[self performSegueWithIdentifier:@"AfterSignUp" sender:self];
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-            [self displayErrorMessage:@"Server Error, please try again later."];
-            [Utilities setUserDefaultString:nil forKey:kXMPPmyJID];
-            [Utilities setUserDefaultString:nil forKey:kUID];
-            NSLog(@"Failure");
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        }];
-        
-        [operation start];
+        [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+         {
+             if (data) {
+                 NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:NULL];
+                 NSString *err = [dic valueForKey:@"error"];
+                 NSLog(@"dic = %@", dic);
+                 if (err) {
+                     NSLog(@"Log in fail!");
+                     [self registerFailWithReason:@"Something went wrong, try again later."];
+                 } else {
+                     
+                     NSLog(@"%@", dic);
+                     if ([dic valueForKey:@"id"] == [NSNull null]) {
+                         NSLog(@"Register error");
+                         [self registerFailWithReason:@"The email has been taken."];
+                     } else {
+                         NSLog(@"Register success");
+                         NSString *realJID = [NSString stringWithFormat:@"%@@%@",[dic valueForKeyPath:@"id"], kHostname];
+                         [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
+                         NSLog(@"Log in using myJID:%@", realJID);
+                         [Utilities setUserDefaultBOOL:NO forKey:kIsListener];
+                         [[self appDelegate] connect];
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             [MBProgressHUD hideHUDForView:self.view animated:YES];
+                             [self displayErrorMessage:@""];
+                             [self.navigationController popToViewController:self.navigationController.viewControllers[self.navigationController.viewControllers.count - 4] animated:YES];
+                         });
+                     }
+                 }
+             }
+             
+         }];
     }
 }
 

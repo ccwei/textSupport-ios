@@ -7,8 +7,6 @@
 //
 
 #import "ContentProvider.h"
-#import "AFNetworking.h"
-
 
 
 @implementation ContentProvider
