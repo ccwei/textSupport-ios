@@ -497,7 +497,6 @@ NSString *const newMessageNotificationName = @"newMessageNotificationName";
 		NSString *body = [[message elementForName:@"body"] stringValue];
 		NSString *displayName = [user displayName];
         
-        
         NSString *msg = [[message elementForName:@"body"] stringValue];
         NSString *from = [[message attributeForName:@"from"] stringValue];
         
@@ -526,7 +525,7 @@ NSString *const newMessageNotificationName = @"newMessageNotificationName";
 			// We are not active, so use a local notification instead
 			UILocalNotification *localNotification = [[UILocalNotification alloc] init];
 			localNotification.alertAction = @"Ok";
-			localNotification.alertBody = [NSString stringWithFormat:@"From: %@\n\n%@",displayName,body];
+			localNotification.alertBody = [NSString stringWithFormat:@"%@", body];
 
 			[[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
 //		}

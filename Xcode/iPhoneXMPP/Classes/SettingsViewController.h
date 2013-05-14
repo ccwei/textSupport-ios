@@ -15,6 +15,7 @@ extern NSString *const kHostname;
 extern NSString *const kEmail;
 extern NSString *const kIsListener;
 extern NSString *const kUID;
+extern NSString *const kNotFirstTimeChat;
 
 @protocol SettingProtocol <NSObject>
 

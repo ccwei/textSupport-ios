@@ -39,6 +39,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		B60C98AB1742246800CD2CE8 /* RetinaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B60C98AA1742246800CD2CE8 /* RetinaIcon.png */; };
+		B60C98AD1742247200CD2CE8 /* iphone_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B60C98AC1742247200CD2CE8 /* iphone_logo.png */; };
 		B6237BD516EECD2400D6E723 /* navigation_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B6237BD416EECD2400D6E723 /* navigation_bar.png */; };
 		B6237BD816EECF5E00D6E723 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6237BD716EECF5E00D6E723 /* CustomTabBarController.m */; };
 		B6237BDA16EED07300D6E723 /* tabBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B6237BD916EED07300D6E723 /* tabBarBackground.png */; };
@@ -81,6 +83,9 @@
 		B648E0E7173CE61D003EEC33 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B648E0DD173CE61D003EEC33 /* AFXMLRequestOperation.m */; };
 		B648E0E8173CE61D003EEC33 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B648E0DF173CE61D003EEC33 /* UIImageView+AFNetworking.m */; };
 		B64FEFDB171F661A00036E1A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B64FEFDA171F661A00036E1A /* MBProgressHUD.m */; };
+		B664ADF81740BE2E0040579C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B664ADF71740BE2E0040579C /* Default-568h@2x.png */; };
+		B664ADFA1740BE680040579C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B664ADF91740BE680040579C /* Default@2x.png */; };
+		B664ADFC1740C3480040579C /* logo_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = B664ADFB1740C3480040579C /* logo_retina.png */; };
 		B678F24816D02E8B00F9208D /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B678F24616D02E8B00F9208D /* CoreDataTableViewController.m */; };
 		B680520A16CF83C900B81836 /* XMPPMessageArchiving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B680520016CF83C900B81836 /* XMPPMessageArchiving.xcdatamodeld */; };
 		B680520B16CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B680520316CF83C900B81836 /* XMPPMessageArchiving_Contact_CoreDataObject.m */; };
@@ -223,6 +228,8 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RootViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TextSupport-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TextSupport-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		B60C98AA1742246800CD2CE8 /* RetinaIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RetinaIcon.png; sourceTree = "<group>"; };
+		B60C98AC1742247200CD2CE8 /* iphone_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone_logo.png; sourceTree = "<group>"; };
 		B6237BD416EECD2400D6E723 /* navigation_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigation_bar.png; sourceTree = "<group>"; };
 		B6237BD616EECF5E00D6E723 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		B6237BD716EECF5E00D6E723 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
@@ -288,6 +295,9 @@
 		B648E0DF173CE61D003EEC33 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		B64FEFD9171F661A00036E1A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		B64FEFDA171F661A00036E1A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		B664ADF71740BE2E0040579C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B664ADF91740BE680040579C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B664ADFB1740C3480040579C /* logo_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_retina.png; sourceTree = "<group>"; };
 		B678F24616D02E8B00F9208D /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		B678F24716D02E8B00F9208D /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		B680520116CF83C900B81836 /* XMPPMessageArchiving.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XMPPMessageArchiving.xcdatamodel; sourceTree = "<group>"; };
@@ -649,9 +659,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B664ADFB1740C3480040579C /* logo_retina.png */,
+				B664ADF91740BE680040579C /* Default@2x.png */,
+				B664ADF71740BE2E0040579C /* Default-568h@2x.png */,
 				B64403CB171CBF9000D9D306 /* WEPopover */,
 				B6237BE316EED3DF00D6E723 /* faces */,
 				B6237BDF16EED2EC00D6E723 /* background.png */,
+				B60C98AC1742247200CD2CE8 /* iphone_logo.png */,
+				B60C98AA1742246800CD2CE8 /* RetinaIcon.png */,
 				B6237BD916EED07300D6E723 /* tabBarBackground.png */,
 				B6237BD416EECD2400D6E723 /* navigation_bar.png */,
 				B6B9F36916E2EC5A0065F72E /* navigationBar.png */,
@@ -1232,6 +1247,11 @@
 				B6A8E034173250DC004B2C27 /* rainy.png in Resources */,
 				B6A8E036173250F6004B2C27 /* sunny.png in Resources */,
 				B6A8E03817325283004B2C27 /* brown.jpg in Resources */,
+				B664ADF81740BE2E0040579C /* Default-568h@2x.png in Resources */,
+				B664ADFA1740BE680040579C /* Default@2x.png in Resources */,
+				B664ADFC1740C3480040579C /* logo_retina.png in Resources */,
+				B60C98AB1742246800CD2CE8 /* RetinaIcon.png in Resources */,
+				B60C98AD1742247200CD2CE8 /* iphone_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1370,7 +1390,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TextSupport_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "TextSupport-Info.plist";
+				INFOPLIST_FILE = "textSupport-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Vendor/libidn\"",
@@ -1388,7 +1408,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TextSupport_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "TextSupport-Info.plist";
+				INFOPLIST_FILE = "textSupport-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Vendor/libidn\"",
@@ -1401,6 +1421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chih-Chiang Wei (M94C84BCL2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -1408,6 +1429,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "0B768BF2-2A99-45F7-AF82-A180B48F7183";
 				SDKROOT = iphoneos;
 				WARNING_CFLAGS = "-Wno-arc-performSelector-leaks";
 			};
@@ -1417,12 +1439,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chih-Chiang Wei (M94C84BCL2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "0B768BF2-2A99-45F7-AF82-A180B48F7183";
 				SDKROOT = iphoneos;
 				WARNING_CFLAGS = "-Wno-arc-performSelector-leaks";
 			};

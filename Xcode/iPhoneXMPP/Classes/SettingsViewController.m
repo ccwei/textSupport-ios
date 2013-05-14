@@ -17,6 +17,7 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 NSString *const kHostname = @"text-support.org";
 NSString *const kIsListener = @"kIsListener";
 NSString *const kUID = @"kUID";
+NSString *const kNotFirstTimeChat = @"kNotFirstTimeChat";
 
 @implementation SettingsViewController
 
@@ -92,7 +93,7 @@ NSString *const kUID = @"kUID";
                  NSLog(@"Log in fail!");
                  dispatch_async(dispatch_get_main_queue(), ^{
                      [MBProgressHUD hideHUDForView:self.view animated:YES];
-                     [self displayErrorMessage:@"Email or password is wrong."];
+                     [self displayErrorMessage:@"Incorrect email or password."];
                  });
                  [Utilities setUserDefaultString:nil forKey:kXMPPmyJID];
                  [Utilities setUserDefaultString:nil forKey:kXMPPmyPassword];

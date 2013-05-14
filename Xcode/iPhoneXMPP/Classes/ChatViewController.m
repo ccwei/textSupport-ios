@@ -10,6 +10,8 @@
 #import "iPhoneXMPPAppDelegate.h"
 #import "NSString+Utils.h"
 #import "MessageViewTableCell.h"
+#import "Utilities.h"
+#import "SettingsViewController.h"
 
 @interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate, MessageDelegate, UIGestureRecognizerDelegate>
 
@@ -58,6 +60,7 @@
 {
     [super viewDidLoad];
     [self appDelegate].messageDelegate = self;
+
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
@@ -110,7 +113,7 @@
 
 - (void)dismissKeyboard
 {
-    
+    [self.view endEditing:YES];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
@@ -121,6 +124,7 @@
 - (IBAction)sendMessage:(id)sender {
     NSString *msgStr = self.messageTextField.text;
     if ([msgStr length] > 0) {
+        [Utilities setUserDefaultBOOL:YES forKey:kNotFirstTimeChat];
         
         NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
         [body setStringValue:msgStr];
