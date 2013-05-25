@@ -7,7 +7,6 @@
 //
 
 #import "MoodRatingViewController.h"
-#import "WEPopoverController.h"
 #import "UIPlaceHolderTextView.h"
 #import "SettingsViewController.h"
 

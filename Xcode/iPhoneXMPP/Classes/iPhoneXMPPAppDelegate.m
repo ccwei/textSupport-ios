@@ -13,6 +13,8 @@
 #import "DDLog.h"
 #import "DDTTYLogger.h"
 
+#import "NSData+Conversion.h"
+#import "AFNetworking.h"
 #import <CFNetwork/CFNetwork.h>
 
 // Log levels: off, error, warn, info, verbose
@@ -80,9 +82,57 @@ NSString *const newMessageNotificationName = @"newMessageNotificationName";
 			[navigationController presentModalViewController:settingsViewController animated:YES];
 		});
 	}
+    
+    application.applicationIconBadgeNumber = 0;
+    
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert |UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
 		
 	return YES;
 }
+
+- (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
+    app.applicationIconBadgeNumber = 0;
+}
+
+- (void)applicationDidFinishLaunching:(UIApplication *)app {
+    // other setup tasks here....
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert |UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+}
+
+
+NSString* stringFromDeviceTokenData(NSData *deviceToken)
+{
+    const char *data = [deviceToken bytes];
+    NSMutableString* token = [NSMutableString string];
+    for (int i = 0; i < [deviceToken length]; i++) {
+        [token appendFormat:@"%02.2hhX", data[i]];
+    }
+    
+    return token;
+}
+
+- (void) sendProviderDeviceToken:(NSString *)deviceToken
+{
+    NSString *myJID = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
+    NSString *myEmail = [[NSUserDefaults standardUserDefaults] stringForKey:kEmail];
+    if (myJID) {
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://text-support.org:1234/update_device_token?device_token=%@&email=%@", deviceToken, myEmail]] cachePolicy: NSURLCacheStorageNotAllowed timeoutInterval:30.0];
+        [request setHTTPMethod:@"GET"];
+        AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+            NSLog(@"Fail to update device token, maybe server error!");
+        }];
+        [operation start];
+        
+    }
+}
+
+// Delegation methods
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
+    [self sendProviderDeviceToken:stringFromDeviceTokenData(devToken)]; // custom method
+    NSLog(@"deviceToken = %@", stringFromDeviceTokenData(devToken));
+}
+
 
 - (void)dealloc
 {
@@ -350,7 +400,7 @@ NSString *const newMessageNotificationName = @"newMessageNotificationName";
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark UIApplicationDelegate
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+/*
 - (void)applicationDidEnterBackground:(UIApplication *)application 
 {
 	// Use this method to release shared resources, save user data, invalidate timers, and store
@@ -376,7 +426,7 @@ NSString *const newMessageNotificationName = @"newMessageNotificationName";
 			// Do other keep alive stuff here.
 		}];
 	}
-}
+}*/
 
 - (void)applicationWillEnterForeground:(UIApplication *)application 
 {

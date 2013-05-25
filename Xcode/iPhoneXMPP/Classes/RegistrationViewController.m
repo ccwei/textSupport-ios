@@ -134,6 +134,7 @@
                          [self registerFailWithReason:@"The email has been taken."];
                      } else {
                          NSLog(@"Register success");
+                        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert |UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
                          NSString *realJID = [NSString stringWithFormat:@"%@@%@",[dic valueForKeyPath:@"id"], kHostname];
                          [Utilities setUserDefaultString:realJID forKey:kXMPPmyJID];
                          NSLog(@"Log in using myJID:%@", realJID);

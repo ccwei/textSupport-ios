@@ -142,6 +142,8 @@
         [self.messages addObject:@{@"msg": [msgStr substituteEmoticons], @"sender": @"you", @"time": [NSString getCurrentTime]}];
         [self.messageTextField resignFirstResponder];
     }
+    
+    NSDictionary *dict = @{};
 }
 
 
