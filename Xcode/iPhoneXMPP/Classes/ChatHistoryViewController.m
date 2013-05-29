@@ -33,6 +33,27 @@
     return self;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        NSManagedObjectContext *moc = [[self appDelegate] managedObjectContext_messageArchiving];
+        [moc deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        NSError *error;
+        [moc save:&error];
+        
+        if (error) {
+            NSLog(@"Can't save, error = %@", [error userInfo]);
+        }
+        /*[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];*/
+    }
+}
+
 - (void)setupFetchResultController
 {
     XMPPMessageArchivingCoreDataStorage *macds = [[self appDelegate] xmppMessageArchivingCoreDataStorage];
@@ -133,6 +154,11 @@
     self.firstTimeView.hidden = [[NSUserDefaults standardUserDefaults] boolForKey:kNotFirstTimeChat] || [[NSUserDefaults standardUserDefaults] boolForKey:kIsListener];
     self.chatBtn.hidden = [[NSUserDefaults standardUserDefaults] boolForKey:kIsListener];
     [self.tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.tableView flashScrollIndicators];
 }
 
 - (void)viewDidLoad

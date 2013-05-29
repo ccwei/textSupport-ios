@@ -104,11 +104,13 @@
     for (XMPPMessageArchiving_Message_CoreDataObject *message in [self.fetchedResultsController fetchedObjects]) {
         message.seen = YES;
     }
-    NSLog(@"%@", [self.fetchedResultsController fetchedObjects]);
-    NSError *error = nil;
+    NSError *error;
+    [moc save:&error];
+    
     if (error) {
-        NSLog(@"error: %@", error);
+        NSLog(@"Can't save, error = %@", [error userInfo]);
     }
+    NSLog(@"%@", [self.fetchedResultsController fetchedObjects]);
 }
 
 - (void)dismissKeyboard
@@ -142,8 +144,6 @@
         [self.messages addObject:@{@"msg": [msgStr substituteEmoticons], @"sender": @"you", @"time": [NSString getCurrentTime]}];
         [self.messageTextField resignFirstResponder];
     }
-    
-    NSDictionary *dict = @{};
 }
 
 
