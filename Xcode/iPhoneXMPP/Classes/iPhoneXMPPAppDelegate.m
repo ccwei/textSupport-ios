@@ -65,7 +65,7 @@ NSString *const newMessageNotificationName = @"newMessageNotificationName";
 	
 	[DDLog addLogger:[DDTTYLogger sharedInstance]];
 
-  // Setup the XMPP stream
+    // Setup the XMPP stream
   
 	[self setupStream];
 
@@ -400,7 +400,7 @@ NSString* stringFromDeviceTokenData(NSData *deviceToken)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark UIApplicationDelegate
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
+
 - (void)applicationDidEnterBackground:(UIApplication *)application 
 {
 	// Use this method to release shared resources, save user data, invalidate timers, and store
@@ -410,7 +410,7 @@ NSString* stringFromDeviceTokenData(NSData *deviceToken)
 	// If your application supports background execution,
 	// called instead of applicationWillTerminate: when the user quits.
 	
-	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+/*	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 
 	#if TARGET_IPHONE_SIMULATOR
 	DDLogError(@"The iPhone simulator does not process background network traffic. "
@@ -425,8 +425,8 @@ NSString* stringFromDeviceTokenData(NSData *deviceToken)
 			
 			// Do other keep alive stuff here.
 		}];
-	}
-}*/
+	}*/
+}
 
 - (void)applicationWillEnterForeground:(UIApplication *)application 
 {

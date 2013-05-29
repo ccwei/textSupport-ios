@@ -40,7 +40,7 @@
     NSEntityDescription *entity = [macds contactEntity:moc];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"streamBareJidStr=%@", self.jid];
     //NSLog(@"Username = %@", self.userName);
-    NSSortDescriptor *sd1 = [[NSSortDescriptor alloc] initWithKey:@"bareJidStr" ascending:YES];
+    NSSortDescriptor *sd1 = [[NSSortDescriptor alloc] initWithKey:@"mostRecentMessageTimestamp" ascending:NO];
     
     NSArray *sortDescriptors = [NSArray arrayWithObjects:sd1, nil];
     
