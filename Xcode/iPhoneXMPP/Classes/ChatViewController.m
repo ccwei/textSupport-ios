@@ -178,9 +178,11 @@ static CGFloat padding = 20.0;
     NSString *message = msg.body;
     NSLocale *locale = [NSLocale currentLocale];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    //[formatter setTimeStyle:NSDateFormatterMediumStyle];
     [formatter setLocale:locale];
     NSString *time = [formatter stringFromDate:msg.timestamp];
+
     CGSize  textSize = { 260.0, 10000.0 };
     CGSize size = [message sizeWithFont:[UIFont boldSystemFontOfSize:13]
                       constrainedToSize:textSize
