@@ -8,6 +8,8 @@
 
 #import "Utilities.h"
 
+NSString *const kDeviceToken = @"kDeviceToken";
+
 @implementation Utilities
 
 + (void)setUserDefaultString:(NSString *)string forKey:(NSString *)key

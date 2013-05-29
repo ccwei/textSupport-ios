@@ -16,6 +16,7 @@
 #import "NSData+Conversion.h"
 #import "AFNetworking.h"
 #import <CFNetwork/CFNetwork.h>
+#import "Utilities.h"
 
 // Log levels: off, error, warn, info, verbose
 #if DEBUG
@@ -111,8 +112,9 @@ NSString* stringFromDeviceTokenData(NSData *deviceToken)
     return token;
 }
 
-- (void) sendProviderDeviceToken:(NSString *)deviceToken
+- (void) sendProviderDeviceToken
 {
+    NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceToken];
     NSString *myJID = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
     NSString *myEmail = [[NSUserDefaults standardUserDefaults] stringForKey:kEmail];
     if (myJID) {
@@ -129,7 +131,8 @@ NSString* stringFromDeviceTokenData(NSData *deviceToken)
 
 // Delegation methods
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
-    [self sendProviderDeviceToken:stringFromDeviceTokenData(devToken)]; // custom method
+    [Utilities setUserDefaultString:stringFromDeviceTokenData(devToken) forKey:kDeviceToken];
+    [self sendProviderDeviceToken]; // custom method
     NSLog(@"deviceToken = %@", stringFromDeviceTokenData(devToken));
 }
 
@@ -431,6 +434,7 @@ NSString* stringFromDeviceTokenData(NSData *deviceToken)
 - (void)applicationWillEnterForeground:(UIApplication *)application 
 {
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+    [self connect];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -61,6 +61,8 @@
 - (BOOL)connect;
 - (void)disconnect;
 
+- (void)sendProviderDeviceToken;
+
 extern NSString* const newMessageNotificationName;
 
 @end

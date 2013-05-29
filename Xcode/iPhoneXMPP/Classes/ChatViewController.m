@@ -12,6 +12,7 @@
 #import "MessageViewTableCell.h"
 #import "Utilities.h"
 #import "SettingsViewController.h"
+#import "MBProgressHUD.h"
 
 @interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate, MessageDelegate, UIGestureRecognizerDelegate>
 
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic) CGRect messageBarViewFrame;
 @property (nonatomic) CGRect tableViewFrame;
+@property (weak, nonatomic) IBOutlet UITextView *promptTextView;
 @end
 
 @implementation ChatViewController
@@ -72,6 +74,11 @@
     [self scrollToBottom];
     [self.view bringSubviewToFront:self.messageBarView];
     self.title = self.nickName;
+    if ([[self.fetchedResultsController fetchedObjects] count] == 0) {
+        self.promptTextView.hidden = NO;
+    } else {
+        self.promptTextView.hidden = YES;
+    }
     //[self.messageTextField becomeFirstResponder];
 	// Do any additional setup after loading the view.
 }
@@ -126,6 +133,12 @@
 - (IBAction)sendMessage:(id)sender {
     NSString *msgStr = self.messageTextField.text;
     if ([msgStr length] > 0) {
+        if ([[self.fetchedResultsController fetchedObjects] count] == 0) {
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"Please wait for response..";
+        }
+        self.promptTextView.hidden = YES;
         [Utilities setUserDefaultBOOL:YES forKey:kNotFirstTimeChat];
         
         NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
@@ -155,6 +168,7 @@
 - (void)newMessageReceived:(NSDictionary *)messageContent {
 	
 	NSString *m = [messageContent objectForKey:@"msg"];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 	m = [m substituteEmoticons];
 	//[messageContent setObject:m forKey:@"msg"];
 	//[messageContent setObject:[NSString getCurrentTime] forKey:@"time"];
@@ -294,6 +308,7 @@ static CGFloat padding = 20.0;
     [self setTableView:nil];
     [self setMessageTextField:nil];
     [self setMessageBarView:nil];
+    [self setPromptTextView:nil];
     [super viewDidUnload];
 }
 

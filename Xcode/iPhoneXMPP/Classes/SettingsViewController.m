@@ -106,6 +106,7 @@ NSString *const kNotFirstTimeChat = @"kNotFirstTimeChat";
                  NSLog(@"Log in using myJID:%@", realJID);
                  [Utilities setUserDefaultBOOL:self.isListener forKey:kIsListener];
                  [[self appDelegate] connect];
+                 [[self appDelegate] sendProviderDeviceToken];
                  dispatch_async(dispatch_get_main_queue(), ^{
                      [MBProgressHUD hideHUDForView:self.view animated:YES];
                      [self displayErrorMessage:@""];
