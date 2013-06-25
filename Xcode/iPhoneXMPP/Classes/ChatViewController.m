@@ -23,6 +23,8 @@
 @property (nonatomic) CGRect messageBarViewFrame;
 @property (nonatomic) CGRect tableViewFrame;
 @property (weak, nonatomic) IBOutlet UITextView *promptTextView;
+@property (weak, nonatomic) IBOutlet UIButton *sendMessageBtn;
+@property (strong, nonatomic) NSTimer* checkConnectionTimer;
 @end
 
 @implementation ChatViewController
@@ -56,6 +58,17 @@
         _messages = [[NSMutableArray alloc] init];
     }
     return _messages;
+}
+
+- (void)timerFired:(NSTimer *)timer
+{
+    BOOL isDisconnected = [[[self appDelegate] xmppStream] isDisconnected];
+    self.sendMessageBtn.enabled = !isDisconnected;
+    if (isDisconnected) {
+        self.sendMessageBtn.alpha = 0.5;
+    } else {
+        self.sendMessageBtn.alpha = 1.0;
+    }
 }
 
 - (void)viewDidLoad
@@ -285,6 +298,8 @@ static CGFloat padding = 20.0;
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [self timerFired:nil];
+    self.checkConnectionTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(timerFired:) userInfo:nil repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -293,6 +308,7 @@ static CGFloat padding = 20.0;
         message.seen = YES;
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.checkConnectionTimer invalidate];
 }
 - (IBAction)tapTableView:(id)sender {
     [self.messageTextField resignFirstResponder];
@@ -309,6 +325,7 @@ static CGFloat padding = 20.0;
     [self setMessageTextField:nil];
     [self setMessageBarView:nil];
     [self setPromptTextView:nil];
+    [self setSendMessageBtn:nil];
     [super viewDidUnload];
 }
 
