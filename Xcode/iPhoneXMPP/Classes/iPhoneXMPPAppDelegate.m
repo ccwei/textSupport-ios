@@ -91,6 +91,11 @@ NSString *const newMessageNotificationName = @"newMessageNotificationName";
 	return YES;
 }
 
+- (void)application:(UIApplication *)app didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    app.applicationIconBadgeNumber = 0;
+}
+
 - (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
     app.applicationIconBadgeNumber = 0;
 }
@@ -125,7 +130,6 @@ NSString* stringFromDeviceTokenData(NSData *deviceToken)
             NSLog(@"Fail to update device token, maybe server error!");
         }];
         [operation start];
-        
     }
 }
 

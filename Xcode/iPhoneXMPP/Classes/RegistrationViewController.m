@@ -10,6 +10,7 @@
 #import "iPhoneXMPPAppDelegate.h"
 #import "Utilities.h"
 #import "MBProgressHUD.h"
+#import "TSConnectionManager.h"
 
 @interface RegistrationViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
@@ -106,18 +107,15 @@
     if([self validateEmail:self.emailTextField.text] && [self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
         [Utilities setUserDefaultString:self.emailTextField.text forKey:kEmail];
         [Utilities setUserDefaultString:self.passwordTextField.text forKey:kXMPPmyPassword];
-        
-        NSURL *aUrl = [NSURL URLWithString:@"http://text-support.org:1234/members"];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl
-                                                               cachePolicy:NSURLCacheStorageNotAllowed
-                                                           timeoutInterval:60.0];
-        [request setHTTPMethod:@"POST"];
         NSString *postString = [NSString stringWithFormat:@"member[email]=%@&member[password]=%@", self.emailTextField.text, self.passwordTextField.text];
-        [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        
+        NSDictionary *options = @{@"path": @"members",
+                                  @"httpMethod": @"POST",
+                                  @"httpBody": postString,
+                                  @"accept": @"application/json"
+                                  };
+        TSConnectionManager *connectionManager = [TSConnectionManager sharedInstance];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+        [connectionManager sendRequestWithOptions:options completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
          {
              if (data) {
                  NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:NULL];
@@ -148,7 +146,6 @@
                      }
                  }
              }
-             
          }];
     }
 }

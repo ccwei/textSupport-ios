@@ -10,6 +10,7 @@
 #import "iPhoneXMPPAppDelegate.h"
 #import "Utilities.h"
 #import "MBProgressHUD.h"
+#import "TSConnectionManager.h"
 
 NSString *const kXMPPmyJID = @"kXMPPmyJID";
 NSString *const kEmail = @"kEmail";
@@ -76,16 +77,15 @@ NSString *const kNotFirstTimeChat = @"kNotFirstTimeChat";
     [Utilities setUserDefaultString:jidField.text forKey:kEmail];
     [Utilities setUserDefaultString:passwordField.text forKey:kXMPPmyPassword];
     
-    NSURL *aUrl = [NSURL URLWithString:@"http://text-support.org:1234/members/sign_in"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:aUrl];
-    [request setHTTPMethod:@"POST"];
     NSString *postString = [NSString stringWithFormat:@"member[email]=%@&member[password]=%@", jidField.text, passwordField.text];
-    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
+    NSDictionary *options = @{@"path": @"members/sign_in",
+                              @"httpMethod": @"POST",
+                              @"httpBody": postString,
+                              @"accept": @"application/json"
+                              };
+    TSConnectionManager *connectionManager = [TSConnectionManager sharedInstance];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
-     {
+    [connectionManager sendRequestWithOptions:options completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
          if (data) {
              NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:NULL];
              NSString *err = [dic valueForKey:@"error"];

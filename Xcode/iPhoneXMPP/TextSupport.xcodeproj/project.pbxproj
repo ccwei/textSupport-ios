@@ -92,6 +92,7 @@
 		B6B9F36D16E2ECA90065F72E /* MoodRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B9F36C16E2ECA90065F72E /* MoodRatingViewController.m */; };
 		B6C6A985170D2794001D9883 /* ListenerInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C6A984170D2794001D9883 /* ListenerInfoViewController.m */; };
 		B6CD580E172721F200B80332 /* ChatHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CD580D172721F200B80332 /* ChatHistoryViewController.m */; };
+		B6DB13601778E49B00FCE42A /* TSConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DB135F1778E49B00FCE42A /* TSConnectionManager.m */; };
 		B6DB65221728D6A200BF463C /* ContentProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B6DB65211728D6A200BF463C /* ContentProvider.m */; };
 		DC1CF89B1361F28000E71363 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8901361F28000E71363 /* NSString+DDXML.m */; };
 		DC1CF89D1361F28000E71363 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8941361F28000E71363 /* DDXMLDocument.m */; };
@@ -295,6 +296,8 @@
 		B6C6A984170D2794001D9883 /* ListenerInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListenerInfoViewController.m; sourceTree = "<group>"; };
 		B6CD580C172721F200B80332 /* ChatHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatHistoryViewController.h; sourceTree = "<group>"; };
 		B6CD580D172721F200B80332 /* ChatHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatHistoryViewController.m; sourceTree = "<group>"; };
+		B6DB135E1778E49B00FCE42A /* TSConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSConnectionManager.h; sourceTree = "<group>"; };
+		B6DB135F1778E49B00FCE42A /* TSConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSConnectionManager.m; sourceTree = "<group>"; };
 		B6DB65201728D6A200BF463C /* ContentProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentProvider.h; sourceTree = "<group>"; };
 		B6DB65211728D6A200BF463C /* ContentProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentProvider.m; sourceTree = "<group>"; };
 		DC1CF88F1361F28000E71363 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
@@ -555,6 +558,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B6DB135E1778E49B00FCE42A /* TSConnectionManager.h */,
+				B6DB135F1778E49B00FCE42A /* TSConnectionManager.m */,
 				B64FEFD2171F655500036E1A /* MBProgressHUD */,
 				B6440412171D03D300D9D306 /* UIPlaceHolderTextView.h */,
 				B6440413171D03D300D9D306 /* UIPlaceHolderTextView.m */,
@@ -1285,6 +1290,7 @@
 				B648E0E7173CE61D003EEC33 /* AFXMLRequestOperation.m in Sources */,
 				B648E0E8173CE61D003EEC33 /* UIImageView+AFNetworking.m in Sources */,
 				B642DDE4174C8A6D003A3C9E /* NSData+Conversion.m in Sources */,
+				B6DB13601778E49B00FCE42A /* TSConnectionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

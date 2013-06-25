@@ -545,7 +545,7 @@ The TextSupport Team
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aif-Yn-rUB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="787" y="369"/>
+            <point key="canvasLocation" x="1147" y="457"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="1Dc-2X-7Pw">
@@ -618,7 +618,7 @@ The TextSupport Team
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="obY-Ji-E4w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1187" y="394"/>
+            <point key="canvasLocation" x="1603" y="394"/>
         </scene>
         <!--Chat History View Controller-->
         <scene sceneID="a9T-6B-A6c">
@@ -749,7 +749,7 @@ We connect you anonymously to people who are willing to listen whenever you have
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A0V-Wd-eHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="102" y="978"/>
+            <point key="canvasLocation" x="-430" y="898"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="h4X-Be-nch">
@@ -822,7 +822,7 @@ We connect you anonymously to people who are willing to listen whenever you have
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRc-wA-boM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="824" y="1005"/>
+            <point key="canvasLocation" x="752" y="1117"/>
         </scene>
         <!--Mood Rating View Controller - TextSupport-->
         <scene sceneID="kTQ-78-y1R">
@@ -893,7 +893,7 @@ We connect you anonymously to people who are willing to listen whenever you have
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csd-VP-QzF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-509" y="-222"/>
+            <point key="canvasLocation" x="-641" y="-213"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="QHR-Fi-t50">
@@ -956,7 +956,7 @@ We connect you anonymously to people who are willing to listen whenever you have
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBG-4Z-7Dj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="206" y="231"/>
+            <point key="canvasLocation" x="166" y="291"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="Uh1-Tz-BhE">
@@ -975,7 +975,7 @@ We connect you anonymously to people who are willing to listen whenever you have
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3x-nB-8Xw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1024" y="51"/>
+            <point key="canvasLocation" x="-1128" y="-213"/>
         </scene>
     </scenes>
     <resources>
@@ -1057,7 +1057,7 @@ We connect you anonymously to people who are willing to listen whenever you have
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="s5z-dh-QxL"/>
         <segue reference="Lke-UF-Pkr"/>
+        <segue reference="s5z-dh-QxL"/>
     </inferredMetricsTieBreakers>
 </document>

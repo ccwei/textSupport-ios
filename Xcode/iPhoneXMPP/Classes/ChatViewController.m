@@ -207,7 +207,7 @@ static CGFloat padding = 20.0;
     UIImage *bgImage = nil;
     if (sender) { // left aligned
         bgImage = [[UIImage imageNamed:@"ballon1.png"] stretchableImageWithLeftCapWidth:24  topCapHeight:15];
-        [cell.messageContentView setFrame:CGRectMake(padding, padding, size.width + padding, size.height)];
+        [cell.messageContentView setFrame:CGRectMake(padding, padding*2, size.width + padding, size.height)];
         [cell.bgImageView setFrame:CGRectMake(padding/2,
                                               cell.messageContentView.frame.origin.y - padding/2,
                                               size.width + padding*2,
